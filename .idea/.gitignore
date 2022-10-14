@@ -5,3 +5,9 @@
 /.idea/
 /out/
 Glob-Git-Oct2022.iml
+
+out/
+idea/
+*.iml
+*.iws
+
