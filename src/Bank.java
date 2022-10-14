@@ -10,7 +10,9 @@ public class Bank {
         myClients.add(client);
     }
     public ArrayList<Client> getClients()  {
-
+        for (int i = 0; i < myClients.size(); i++) {
+            System.out.println(myClients.get(i));
+        }
         return myClients;
     }
     public Bank(String bankName){
