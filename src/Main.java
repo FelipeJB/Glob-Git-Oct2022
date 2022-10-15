@@ -12,11 +12,11 @@ public class Main {
         bank.addUserToBank(client);
         client = new Client("luisafer", 0516);
         client.savingsAccount.addMoney(10000);
-        System.out.println(client.savingsAccount.addMoney(10000));
         System.out.println(client.savingsAccount.withdrawMoney(100));
         System.out.println(client.savingsAccount.withdrawMoney(1100));
         System.out.println(client.savingsAccount.getBalance());
         bank.addUserToBank(client);
+        System.out.println(client.savingsAccount.sendMoney(3000));
 
 
         //System.out.println(bank.clientList);

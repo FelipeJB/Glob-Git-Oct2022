@@ -11,14 +11,16 @@ public class Account {
     public String accountType = "Savings Account";
     Date openingDate;
     public double balance;
-    double tax;
+    double withdrawalsTax;
+    double transferTax;
 
     public Account(){
         serialNumberAccount = serialNumberAccount + 1;
         accountType = "Savings Account";
         accountNumber = serialNumberAccount;
         openingDate = new Date();
-        tax = 0.15;
+        withdrawalsTax = 0.15;
+        transferTax = 100;
     }
 
     public String toString(){
@@ -30,7 +32,7 @@ public class Account {
 
     public String getBalance(){
         return "******    BALANCE    ****** \n"
-                + "  Your Balance  $" + balance;
+                + "  Your Balance  $" + balance + "\n";
     }
 
     public String withdrawMoney(double amount){
@@ -43,17 +45,17 @@ public class Account {
                     + "  Taxes $" + taxesAmount + "\n"
                     + "  TOTAL $" + totalAmount + taxesAmount + "\n"
                     + "  ------ \n"
-                    + "  New Balance: $" + balance + "\n";
+                    + "  Your Balance: $" + balance + "\n";
         } else {
-            double taxesAmount = 200 + (amount * tax);
-            double totalAmount = amount + 200 + (amount * tax);
+            double taxesAmount = 200 + (amount * withdrawalsTax);
+            double totalAmount = amount + 200 + (amount * withdrawalsTax);
             balance = balance - totalAmount;
             return "******    TRANSACTION    ****** \n"
                     + "  You have withdrawn $" + amount + "\n"
                     + "  Taxes $" + taxesAmount + "\n"
                     + "  TOTAL $" + totalAmount + "\n"
                     + "  ------ \n"
-                    + "  New Balance: $" + balance + "\n";
+                    + "  Your Balance: $" + balance + "\n";
         }
     }
     public String addMoney(double amount){
@@ -64,9 +66,23 @@ public class Account {
                 + "  New Balance: $" + balance + "\n";
     }
 
-    public String transferMoney(double amount, Account numberAccountToTransfer){
-
+    public String sendMoney(double amount){
+        balance = balance - amount - transferTax;
+        return "******    TRANSACTION    ****** \n"
+                + "  You have transferred $" + amount + "\n"
+                + "  ------ \n"
+                + "  Your Balance: $" + balance + "\n";
     }
+
+    public String receiveMoney(double amount){
+        balance = balance + amount;
+        return "n ******    TRANSACTION    ****** \n"
+                + "  You have received $" + amount + "\n"
+                + "  ------ \n"
+                + "  Your Balance: $" + balance + "\n";
+    }
+
+
 }
 
 
