@@ -21,5 +21,8 @@ public class Client {
     public String getPassword() { return this.password; }
     BankAccount myBankAccount = new BankAccount(123, LocalDate.parse("2009-05-30"), 300  );
 
+
+
+
 }
 

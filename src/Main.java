@@ -2,22 +2,34 @@ package src;
 
 import jdk.internal.org.objectweb.asm.tree.analysis.Analyzer;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Bank MorganStanley = new Bank("Morgan Stanley");
         System.out.println("Welcome to " + MorganStanley.getName());
-        // System.out.println(myBank.Ana.myBankAccount.getOpeningDate());
+
+        HashMap<String, String> users = new HashMap<>();
+        users.put(MorganStanley.Ana.getUser(), MorganStanley.Ana.getPassword());
         Scanner myScanner = new Scanner(System.in);
         System.out.println("Enter user name");
-        MorganStanley.Ana.user = myScanner.nextLine();
+        String tempUser = myScanner.nextLine();
         myScanner = new Scanner(System.in);
-        System.out.println("Enter password");
-        MorganStanley.Ana.password = myScanner.nextLine();
-        myScanner = new Scanner(System.in);
-        System.out.println("Welcome " + MorganStanley.Ana.getUser());
-
+        for  (String i : users.keySet()) {
+            if (i != tempUser) {
+                System.out.println("Invalid user name. Try again!\n");
+            } else {
+                tempUser = MorganStanley.Ana.getUser();
+                System.out.println("Enter password");
+                String tempPassword = myScanner.nextLine();
+                myScanner = new Scanner(System.in);
+                if (MorganStanley.Ana.getPassword() != tempPassword ) {
+                    System.out.println("Invalid password. Try again!\n");
+                }
+                System.out.println("Welcome " + MorganStanley.Ana.getUser() + ".\n");
+            }
+        }
         int option;
         do {
             System.out.println("Select your option");
@@ -36,7 +48,7 @@ public class Main {
                         float moneyAmount = myScanner.nextFloat();
                         myScanner = new Scanner(System.in);
                         MorganStanley.Ana.myBankAccount.depositMoney(moneyAmount);
-                        System.out.println("Current Balance: USD " + MorganStanley.Ana.myBankAccount.getBalance());
+                        System.out.println("Current Balance: USD " + MorganStanley.Ana.myBankAccount.getBalance() + ".\n");
                         break;
                     case 2:
                         System.out.println("Insert withdraw amount (USD)");
@@ -44,10 +56,10 @@ public class Main {
                         myScanner = new Scanner(System.in);
                         MorganStanley.Ana.myBankAccount.withdrawMoney(moneyAmountW);
                         if (moneyAmountW > MorganStanley.Ana.myBankAccount.balance){
-                            System.out.println("Withdraw amount cannot be higher than balance account.");
-                            System.out.println("Current Balance: USD " + MorganStanley.Ana.myBankAccount.getBalance());
+                            System.out.println("Withdraw amount cannot be higher than balance account.\n");
+                            System.out.println("Current Balance: USD " + MorganStanley.Ana.myBankAccount.getBalance() + ".\n");
                         } else {
-                            System.out.println("Current Balance: USD " + MorganStanley.Ana.myBankAccount.getBalance());
+                            System.out.println("Current Balance: USD " + MorganStanley.Ana.myBankAccount.getBalance() + ".\n");
                         }
                         break;
                     case 3:
