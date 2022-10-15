@@ -2,8 +2,8 @@ package org.globant.bank;
 
 public class Client {
     public Account savingsAccount;
-    String user;
-    int password;
+    private final String user;
+    private final int password;
 
 
     //cada vez que se crea un cliente se crea un account

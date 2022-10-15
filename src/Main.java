@@ -1,4 +1,3 @@
-import org.globant.bank.Account;
 import org.globant.bank.Bank;
 import org.globant.bank.Client;
 
@@ -8,15 +7,17 @@ public class Main {
 
         Client client = new Client("oarestrepo22", 6289);
         bank.addUserToBank(client);
+        client.savingsAccount.depositMoney(1000);
+        client.savingsAccount.withdrawMoney(100);
+
         client = new Client("daniparra", 2289);
         bank.addUserToBank(client);
-        client = new Client("luisafer", 0516);
-        client.savingsAccount.addMoney(10000);
-        System.out.println(client.savingsAccount.withdrawMoney(100));
-        System.out.println(client.savingsAccount.withdrawMoney(1100));
-        System.out.println(client.savingsAccount.getBalance());
-        bank.addUserToBank(client);
-        System.out.println(client.savingsAccount.sendMoney(3000));
+        client.savingsAccount.depositMoney(2000);
+
+
+
+
+
 
 
         //System.out.println(bank.clientList);

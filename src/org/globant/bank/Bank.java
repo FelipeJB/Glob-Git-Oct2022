@@ -20,6 +20,34 @@ public class Bank {
                 + clientList;
     }
 
+    //TRANSACTIONS
+    public void withdrawTransaction (double amount, Account account){
+        System.out.println(account.withdrawMoney(amount));
+    }
 
+    public void depositTransaction(double amount, Account account){
+        System.out.println(account.depositMoney(amount));
+    }
 
+    public void transferTransaction(double amount, Account sendingAccount, Account receivingAccount){
+        System.out.println(sendingAccount.sendMoney(amount));
+        receivingAccount.receiveMoney(amount);
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
