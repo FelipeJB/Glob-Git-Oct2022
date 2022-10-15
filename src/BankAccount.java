@@ -16,4 +16,18 @@ public class BankAccount {
     public LocalDate getOpeningDate() { return this.openingDate; }
     public float getBalance() {return this.balance; }
 
+    public float depositMoney(float moneyAmount) {
+        balance = this.balance + moneyAmount;
+        return moneyAmount;
+    }
+
+    public float withdrawMoney(float moneyAmount) {
+        if (balance > moneyAmount) {
+            balance = this.balance + moneyAmount;
+            return 0;
+        } else {
+            return balance;
+        }
+    }
+
 }
