@@ -12,7 +12,19 @@ public class SavingsAccount {
 
     // ----------- GETTERS --------------
 
+    public int getAccountNumber(){
+        return this.accountNumber;
+    }
 
+    public float getBalance(){
+        return this.balance;
+    }
+
+    public LocalDate getCreationDate(){
+        return creationDate;
+    }
+
+    // ----------- CONSTRUCTOR -----------------
 
     public SavingsAccount(float balance){
 
@@ -25,12 +37,14 @@ public class SavingsAccount {
 
     }
 
-    public int updateBalance(float amount){
+    // ------------- METHODS -----------------
+
+    public boolean updateBalance(float amount){
         if (this.balance + amount < 0){
-            return 1;
+            return false;
         } else {
             this.balance = this.balance + amount;
-            return 0;
+            return true;
         }
     }
 

@@ -12,6 +12,22 @@ public class User {
     private int id;
     private SavingsAccount account;
 
+    // ----------- GETTERS --------------
+
+    public String getUserName(){
+        return this.userName;
+    }
+
+    public int getId(){
+        return this.id;
+    }
+
+    public SavingsAccount getAccount(){
+        return this.account;
+    }
+
+    // ----------- CONSTRUCTOR --------------
+
     public User(String userName, String password, float balance) {
         this.userName = userName;
         this.password = password;
@@ -20,7 +36,16 @@ public class User {
         this.id = counter;
         counter++;
 
+    }
 
+    // ------------ METHODS --------------
+
+    public boolean confirmPassword(String passwordAttempt){
+        if (this.password == passwordAttempt){
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
