@@ -23,7 +23,7 @@ public class BankAccount {
 
     public float withdrawMoney(float moneyAmount) {
         if (balance > moneyAmount) {
-            balance = this.balance + moneyAmount;
+            balance = this.balance - moneyAmount;
             return 0;
         } else {
             return balance;
