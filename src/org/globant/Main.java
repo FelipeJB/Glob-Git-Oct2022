@@ -93,28 +93,28 @@ public class Main {
                                         int accountNumberToTransfer = myScanner.nextInt();
                                         myScanner = new Scanner(System.in);
 
-
-                                        for (Client clientToTransfer  : bank.myClients) {
-                                            if (accountNumberToTransfer == clientToTransfer .userSavingAccount.accountNumber) {
+                                        for (Client clientToTransfer : bank.myClients) {
+                                            if (accountNumberToTransfer == clientToTransfer.userSavingAccount.accountNumber) {
                                                 System.out.println("Ingrese el monto de dinero a transferir");
                                                 int amountToTransfer = myScanner.nextInt();
                                                 myScanner = new Scanner(System.in);
                                                 client.userSavingAccount.transferMoney(amountToTransfer, accountNumberToTransfer);
-                                            }
+
+                                            } /** else if (accountNumberToTransfer != clientToTransfer.userSavingAccount.accountNumber && clientToTransfer == bank.myClients.get(bank.myClients.size() - 1)) {
+                                                System.out.println("El numero de cuenta ingresado no existe");
+                                            }break; */ /**Esto no funciona porque si el numero de cuenta no existe, el programa se rompe, no sirve ni con else ni con else if*/
                                         }
-
-
                                         break;
-
+                                    case 4:
+                                        break;
                                     default:
                                         System.out.println("Opcion no valida");
                                         break;
                                 }
                             } while (option2 != 4);
-                        }else{
-                            System.out.println("El numero de cuenta ingresado no existe");
-                            break;
-                        }
+                        }else if (accountNumber != client.userSavingAccount.accountNumber){
+                            System.out.println("Numero de cuenta no encontrado");
+                        } break;
                     }
                     break;
                 case 4:

@@ -28,14 +28,14 @@ public class Account {
             if (amount < 1000){
                 if (this.balance - amount - 200 >= 0){
                     this.balance -= amount + 200;
-                    System.out.println("Se han retirado " + amount + " de la cuenta " + this.accountNumber);
+                    System.out.println("Se han retirado " + amount + " de la cuenta " + this.accountNumber +" y se han cobrado 200 de comision");
                 }else{
                     System.out.println("No se puede retirar esa cantidad de dinero");
                 }
             }else{
                 if (this.balance - amount - 200 - (amount * 0.15) >= 0){
                     this.balance -= amount + 200 + (amount * 0.15);
-                    System.out.println("Se han retirado " + amount + " de la cuenta " + this.accountNumber);
+                    System.out.println("Se han retirado " + amount + " de la cuenta " + this.accountNumber+ ", se han cobrado 200 de comision y " + (amount * 0.15) + " de impuestos");
                 }else{
                     System.out.println("No se puede retirar esa cantidad de dinero");
                 }

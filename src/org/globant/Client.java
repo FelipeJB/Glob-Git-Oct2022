@@ -21,12 +21,16 @@ public class Client {
 
         System.out.println("Ingrese el nombre del cliente");
         String userName = myScanner.nextLine();
+        while (userName == null || userName.isEmpty()) {
+            System.out.println("El nombre no puede ser nulo o vacio, ingrese uno valido: ");
+            userName = myScanner.nextLine();
+        }
         this.userName = userName;
 
-        System.out.println("Ingrese el password del cliente no debe tener mas de 4 digitos");
+        System.out.println("Ingrese el password del cliente (No debe tener mas o menos de 4 digitos: ");
         String userPassword = myScanner.nextLine();
         while (userPassword.length() > 4 || userPassword.length() < 4) {
-            System.out.println("El password no puede tener mas de 4 digitos");
+            System.out.println("El password no puede tener mas de 4 digitos, ingrese uno valido: \"");
             userPassword = myScanner.nextLine();
         }
         this.userPassword = userPassword;
