@@ -50,7 +50,7 @@ public class Account {
             this.balance -= amount + 100;
 
             for (Client client : Bank.myClients){
-                if (client.userSavingAccount.accountNumber == account){
+                if (client.userSavingAccount.accountNumber == account){  //si el numero de cuenta del cliente es igual al numero de cuenta que se le pasa como parametro
                     client.userSavingAccount.balance += amount;
                 }
             }

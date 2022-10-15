@@ -32,7 +32,7 @@ public class Client {
         this.userPassword = userPassword;
 
         int accountNumber = 0;
-        for (Client client : Bank.myClients) {
+        for (Client client : Bank.myClients) { //recorre la lista de clientes y si numero de cuenta es igual al numero de cuenta del cliente que se esta creando, se le suma 1 al numero de cuenta
             accountNumber = client.userSavingAccount.accountNumber;
         }
         accountNumber += 1;

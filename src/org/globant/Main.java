@@ -68,7 +68,6 @@ public class Main {
                         if (accountNumber == client.userSavingAccount.accountNumber) {
 
                             do {
-
                                 System.out.println("Bienvenido " + client.userName);
                                 System.out.println("1. Depositar");
                                 System.out.println("2. Retirar");
@@ -94,18 +93,17 @@ public class Main {
                                         int accountNumberToTransfer = myScanner.nextInt();
                                         myScanner = new Scanner(System.in);
 
-                                        for (Client clientToTransfer : bank.myClients) {
-                                            if (accountNumberToTransfer == clientToTransfer.userSavingAccount.accountNumber) {
 
+                                        for (Client clientToTransfer  : bank.myClients) {
+                                            if (accountNumberToTransfer == clientToTransfer .userSavingAccount.accountNumber) {
                                                 System.out.println("Ingrese el monto de dinero a transferir");
                                                 int amountToTransfer = myScanner.nextInt();
                                                 myScanner = new Scanner(System.in);
                                                 client.userSavingAccount.transferMoney(amountToTransfer, accountNumberToTransfer);
-                                            } else {
-                                                System.out.println("El numero de cuenta ingresado no existe");
-                                                break;
                                             }
                                         }
+
+
                                         break;
 
                                     default:
