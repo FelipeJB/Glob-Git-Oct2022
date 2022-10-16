@@ -65,7 +65,7 @@ public class Main {
                                         System.out.println("Client name: " + mariaUser + " | " + " Account number: " + mariaAccountNumber + " |" + " Opening date: " + mariaOpeningDate + " |" + " Balance: " + mariaBalance + ".\n");
                                         break;
                                     case 2:
-                                        System.out.println("Have a great day!");
+                                        System.out.println("Have a great day!\n");
                                         break;
                                 }
                             }
