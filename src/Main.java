@@ -1,6 +1,8 @@
 package src;
 
 import jdk.internal.org.objectweb.asm.tree.analysis.Analyzer;
+
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Main {
@@ -41,7 +43,7 @@ public class Main {
                         int optionBank = 0;
                         do {
                             System.out.println("Select your option");
-                            System.out.println("    1. Print list of users");
+                            System.out.println("    1. Print list of clients");
                             System.out.println("    2. Exit");
                             optionBank = myScanner.nextInt();
                             myScanner = new Scanner(System.in);
@@ -50,7 +52,17 @@ public class Main {
                             } else if (optionBank >= 1 && optionBank <= 2) {
                                 switch (optionBank) {
                                     case 1:
-                                        System.out.println("Your current balance is USD " + MorganStanley.Ana.myBankAccount.getBalance() + ".\n");
+                                        System.out.println("List of clients:\n");
+                                        String anaUser = MorganStanley.Ana.getName();
+                                        float anaAccountNumber = MorganStanley.Ana.anaAccount.getAccountNumber();
+                                        LocalDate anaOpeningDate = MorganStanley.Ana.anaAccount.getOpeningDate();
+                                        float anaBalance = MorganStanley.Ana.anaAccount.getBalance();
+                                        System.out.println("Client name: " + anaUser + " |" + " Account number: " + anaAccountNumber + " |" + " Opening date: "+ anaOpeningDate + " |" + " Balance: " + anaBalance + ".\n");
+                                        String mariaUser = MorganStanley.Maria.getName();
+                                        float mariaAccountNumber = MorganStanley.Maria.mariaAccount.getAccountNumber();
+                                        LocalDate mariaOpeningDate = MorganStanley.Maria.mariaAccount.getOpeningDate();
+                                        float mariaBalance = MorganStanley.Maria.mariaAccount.getBalance();
+                                        System.out.println("Client name: " + mariaUser + " | " + " Account number: " + mariaAccountNumber + " |" + " Opening date: " + mariaOpeningDate + " |" + " Balance: " + mariaBalance + ".\n");
                                         break;
                                     case 2:
                                         System.out.println("Have a great day!");
@@ -92,25 +104,25 @@ public class Main {
                             } else if (option >= 1 && option <= 5) {
                                 switch (option) {
                                     case 1:
-                                        System.out.println("Your current balance is USD " + MorganStanley.Ana.myBankAccount.getBalance() + ".\n");
+                                        System.out.println("Your current balance is USD " + MorganStanley.Ana.anaAccount.getBalance() + ".\n");
                                         break;
                                     case 2:
                                         System.out.println("Insert deposit amount (USD)");
                                         float moneyAmount = myScanner.nextFloat();
                                         myScanner = new Scanner(System.in);
-                                        MorganStanley.Ana.myBankAccount.depositMoney(moneyAmount);
-                                        System.out.println("Current Balance: USD " + MorganStanley.Ana.myBankAccount.getBalance() + ".\n");
+                                        MorganStanley.Ana.anaAccount.depositMoney(moneyAmount);
+                                        System.out.println("Current Balance: USD " + MorganStanley.Ana.anaAccount.getBalance() + ".\n");
                                         break;
                                     case 3:
                                         System.out.println("Insert withdraw amount (USD)");
                                         float moneyAmountW = myScanner.nextFloat();
                                         myScanner = new Scanner(System.in);
-                                        if (moneyAmountW > MorganStanley.Ana.myBankAccount.balance) {
+                                        if (moneyAmountW > MorganStanley.Ana.anaAccount.balance) {
                                             System.out.println("Withdraw amount cannot be higher than balance account.\n");
-                                            System.out.println("Current Balance: USD " + MorganStanley.Ana.myBankAccount.getBalance() + ".\n");
+                                            System.out.println("Current Balance: USD " + MorganStanley.Ana.anaAccount.getBalance() + ".\n");
                                         } else {
-                                            MorganStanley.Ana.myBankAccount.withdrawMoney(moneyAmountW);
-                                            System.out.println("Current Balance: USD " + MorganStanley.Ana.myBankAccount.getBalance() + ".\n");
+                                            MorganStanley.Ana.anaAccount.withdrawMoney(moneyAmountW);
+                                            System.out.println("Current Balance: USD " + MorganStanley.Ana.anaAccount.getBalance() + ".\n");
                                         }
                                         break;
                                     case 4:
