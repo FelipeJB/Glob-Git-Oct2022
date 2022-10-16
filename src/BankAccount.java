@@ -29,5 +29,13 @@ public class BankAccount {
             return balance;
         }
     }
-
+    public float transferMoneyOut(float moneyAmount) {
+        float taxPlus = (float) ((15.0 / 100) * moneyAmount);
+        if (moneyAmount < 1000 && moneyAmount > 0) {
+            balance = this.balance - moneyAmount - 200;
+        } else if (moneyAmount >= 1000 ){
+            balance = this.balance - moneyAmount - 200 - taxPlus;
+        }
+        return balance;
+    }
 }

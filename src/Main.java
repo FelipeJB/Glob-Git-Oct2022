@@ -100,7 +100,7 @@ public class Main {
                             option = myScanner.nextInt();
                             myScanner = new Scanner(System.in);
                             if (option < 1 || option > 5) {
-                                System.out.println("Invalid option. Insert a number between 1 and 3\n");
+                                System.out.println("Invalid option. Insert a number between 1 and 5\n");
                             } else if (option >= 1 && option <= 5) {
                                 switch (option) {
                                     case 1:
@@ -127,6 +127,14 @@ public class Main {
                                         break;
                                     case 4:
                                         System.out.println("Testing Transfer!");
+                                        System.out.println("Your current balance is USD " + MorganStanley.Ana.anaAccount.getBalance() + ".\n");
+                                        System.out.println("Insert transfer amount (USD)");
+                                        float moneyAmountTransfer = myScanner.nextFloat();
+                                        myScanner = new Scanner(System.in);
+                                        MorganStanley.Ana.anaAccount.transferMoneyOut(moneyAmountTransfer);
+                                        MorganStanley.Maria.mariaAccount.depositMoney(moneyAmountTransfer);
+                                        System.out.println("Money transfer confirmed!\n");
+                                        System.out.println("Current Balance: USD " + MorganStanley.Ana.anaAccount.getBalance() + ".\n");
                                         break;
                                     case 5:
                                         System.out.println("Have a great day!");
