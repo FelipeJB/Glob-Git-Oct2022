@@ -6,13 +6,13 @@ import org.globant.GlobantBankData.User;
 
 import java.util.List;
 
-public class BankAdmin {
+public class BankAdminSession {
 
     private boolean authentication;
 
     // ------------- CONSTRUCTOR -------------
 
-    public BankAdmin(String password){
+    public BankAdminSession(String password){
         String pass = "123"; // I know this should be an environment variable
 
         if (password == pass){
@@ -56,7 +56,7 @@ public class BankAdmin {
             System.out.print("  " + currentUser.getId() + "  ");
             System.out.print("  " + currentAccount.getAccountNumber() + "  ");
             System.out.print("  " + currentAccount.getCreationDate() + "  ");
-            System.out.println("  " + currentAccount.getBalance() + "  ");
+            System.out.println("  $" + currentAccount.getBalance() + "  ");
         }
     }
 }
