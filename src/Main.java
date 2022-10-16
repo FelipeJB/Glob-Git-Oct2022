@@ -147,12 +147,15 @@ public class Main {
                                         System.out.println("Current Balance: USD " + MorganStanley.Ana.anaAccount.getBalance() + ".\n");
                                         break;
                                     case 5:
-                                        System.out.println("Have a great day!");
+                                        System.out.println("Have a great day!\n");
                                         break;
                                 }
                             }
                         } while (option != 5);
-
+                        break;
+                    case 3:
+                        System.out.println("Have a great day!\n");
+                        break;
                 }
             }
         } while (bankAuth != 3);
