@@ -12,6 +12,18 @@ public class User {
     private int id;
     private SavingsAccount account;
 
+    // ----------- CONSTRUCTOR --------------
+
+    public User(String userName, String password, float balance) {
+        this.userName = userName;
+        this.password = password;
+        this.account = new SavingsAccount(balance);
+
+        this.id = counter;
+        counter++;
+
+    }
+
     // ----------- GETTERS --------------
 
     public String getUserName(){
@@ -24,18 +36,6 @@ public class User {
 
     public SavingsAccount getAccount(){
         return this.account;
-    }
-
-    // ----------- CONSTRUCTOR --------------
-
-    public User(String userName, String password, float balance) {
-        this.userName = userName;
-        this.password = password;
-        this.account = new SavingsAccount(balance);
-
-        this.id = counter;
-        counter++;
-
     }
 
     // ------------ METHODS --------------

@@ -5,54 +5,54 @@ import java.util.List;
 
 public class BankDataBase {
 
-    private List<SavingsAccount> allAccounts = new ArrayList<>();
-    private List<User> allUsers = new ArrayList<>();
+    private static List<SavingsAccount> allAccounts = new ArrayList<>();
+    private static List<User> allUsers = new ArrayList<>();
+
+    // ------------- CONSTRUCTOR -------------
+//
+//    public BankDataBase(SavingsAccount newAccount, User newUser){
+//
+//        allAccounts.add(newAccount);
+//        allUsers.add(newUser);
+//
+//    }
 
     // ----------- GETTERS --------------
 
-    public List<SavingsAccount> getAllAccounts(){
-        return this.allAccounts;
+    public static List<SavingsAccount> getAllAccounts(){
+        return allAccounts;
     }
 
-    public List<User> getAllUsers(){
-        return this.allUsers;
-    }
-
-    // ------------- CONSTRUCTOR -------------
-
-    public BankDataBase(SavingsAccount newAccount, User newUser){
-
-        this.allAccounts.add(newAccount);
-        this.allUsers.add(newUser);
-
+    public static List<User> getAllUsers(){
+        return allUsers;
     }
 
     // -------------- METHODS -----------------
 
-    public void addNewEntry(SavingsAccount newAccount, User newUser){
+    public static void addNewEntry(SavingsAccount newAccount, User newUser){
 
-        this.allAccounts.add(newAccount);
-        this.allUsers.add(newUser);
+        allAccounts.add(newAccount);
+        allUsers.add(newUser);
 
     }
 
-    public boolean deleteEntry(int index){
+    public static boolean deleteEntry(int index){
         if (index + 1 > allAccounts.size() && index < 0){
             return false;
         } else {
-            allUsers.remove(index);
-            allAccounts.remove(index);
+            allUsers.remove(index - 1);
+            allAccounts.remove(index - 1);
             return true;
         }
     }
 
-    public boolean modifyEntryBalance(int index, float amount){
+    public static boolean modifyEntryBalance(int index, float amount){
 
-        SavingsAccount updatedAccount = this.allAccounts.get(index);
+        SavingsAccount updatedAccount = allAccounts.get(index);
 
         if (updatedAccount.updateBalance(amount)){
             updatedAccount.updateBalance(amount);
-            this.allAccounts.set(index, updatedAccount);
+            allAccounts.set(index, updatedAccount);
             return true;
         } else {
             return false;
