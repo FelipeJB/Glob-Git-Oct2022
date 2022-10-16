@@ -32,6 +32,7 @@ public class Bank {
     public void transferTransaction(double amount, Account sendingAccount, Account receivingAccount){
         System.out.println(sendingAccount.sendMoney(amount));
         receivingAccount.receiveMoney(amount);
+
     }
 }
 
