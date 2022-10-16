@@ -39,37 +39,7 @@ public class Main {
                                 System.out.println(("User name / Password not matching. Try again.\n"));
                             }
                         } while (authenticationBank == 0);
-
-                        int optionBank = 0;
-                        do {
-                            System.out.println("Select your option");
-                            System.out.println("    1. Print list of clients");
-                            System.out.println("    2. Exit");
-                            optionBank = myScanner.nextInt();
-                            myScanner = new Scanner(System.in);
-                            if (optionBank < 1 || optionBank > 2) {
-                                System.out.println("Invalid option. Insert a number between 1 and 2\n");
-                            } else if (optionBank >= 1 && optionBank <= 2) {
-                                switch (optionBank) {
-                                    case 1:
-                                        System.out.println("List of clients:\n");
-                                        String anaUser = MorganStanley.Ana.getName();
-                                        float anaAccountNumber = MorganStanley.Ana.anaAccount.getAccountNumber();
-                                        LocalDate anaOpeningDate = MorganStanley.Ana.anaAccount.getOpeningDate();
-                                        float anaBalance = MorganStanley.Ana.anaAccount.getBalance();
-                                        System.out.println("Client name: " + anaUser + " |" + " Account number: " + anaAccountNumber + " |" + " Opening date: "+ anaOpeningDate + " |" + " Balance: " + anaBalance + ".\n");
-                                        String mariaUser = MorganStanley.Maria.getName();
-                                        float mariaAccountNumber = MorganStanley.Maria.mariaAccount.getAccountNumber();
-                                        LocalDate mariaOpeningDate = MorganStanley.Maria.mariaAccount.getOpeningDate();
-                                        float mariaBalance = MorganStanley.Maria.mariaAccount.getBalance();
-                                        System.out.println("Client name: " + mariaUser + " | " + " Account number: " + mariaAccountNumber + " |" + " Opening date: " + mariaOpeningDate + " |" + " Balance: " + mariaBalance + ".\n");
-                                        break;
-                                    case 2:
-                                        System.out.println("Have a great day!\n");
-                                        break;
-                                }
-                            }
-                        } while (optionBank != 2);
+                        MorganStanley.clientInformation();
                         break;
                     case 2:
                         int authentication = 0;
@@ -88,7 +58,6 @@ public class Main {
                                 System.out.println(("User name / Password not matching. Try again.\n"));
                             }
                         } while (authentication == 0);
-
                         int option;
                         do {
                             System.out.println("Select your option");
