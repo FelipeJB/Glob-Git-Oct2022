@@ -22,20 +22,27 @@ public class BankAccount {
     }
 
     public float withdrawMoney(float moneyAmount) {
-        if (balance > moneyAmount) {
-            balance = this.balance - moneyAmount;
-            return 0;
-        } else {
-            return balance;
-        }
-    }
-    public float transferMoneyOut(float moneyAmount) {
         float taxPlus = (float) ((15.0 / 100) * moneyAmount);
+
+
+
         if (moneyAmount < 1000 && moneyAmount > 0) {
             balance = this.balance - moneyAmount - 200;
         } else if (moneyAmount >= 1000 ){
             balance = this.balance - moneyAmount - 200 - taxPlus;
         }
         return balance;
+        }
+
+    public float transferMoneyOut(float moneyAmount) {
+        if (balance > moneyAmount) {
+            balance = this.balance - moneyAmount - 100;
+            return 0;
+        } else {
+            return balance;
+        }
     }
 }
+
+
+

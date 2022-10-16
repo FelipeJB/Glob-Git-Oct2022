@@ -107,13 +107,21 @@ public class Main {
                                         System.out.println("Your current balance is USD " + MorganStanley.Ana.anaAccount.getBalance() + ".\n");
                                         break;
                                     case 2:
+                                        System.out.println("Important notice:");
+                                        System.out.println("Adding money to the account does not have any cost.");
+                                        System.out.println("Your current balance is USD " + MorganStanley.Ana.anaAccount.getBalance() + ".\n");
                                         System.out.println("Insert deposit amount (USD)");
                                         float moneyAmount = myScanner.nextFloat();
                                         myScanner = new Scanner(System.in);
                                         MorganStanley.Ana.anaAccount.depositMoney(moneyAmount);
+                                        System.out.println("Your deposit is confirmed!\n");
                                         System.out.println("Current Balance: USD " + MorganStanley.Ana.anaAccount.getBalance() + ".\n");
                                         break;
                                     case 3:
+                                        System.out.println("Important notice:");
+                                        System.out.println("Withdrawals tax is USD 200 for amounts less than USD 1000.");
+                                        System.out.println("Withdrawals of USD 1000 or more, withdrawals tax is USD 200 plus 15% of the amount to withdraw.");
+                                        System.out.println("Your current balance is USD " + MorganStanley.Ana.anaAccount.getBalance() + ".\n");
                                         System.out.println("Insert withdraw amount (USD)");
                                         float moneyAmountW = myScanner.nextFloat();
                                         myScanner = new Scanner(System.in);
@@ -122,18 +130,20 @@ public class Main {
                                             System.out.println("Current Balance: USD " + MorganStanley.Ana.anaAccount.getBalance() + ".\n");
                                         } else {
                                             MorganStanley.Ana.anaAccount.withdrawMoney(moneyAmountW);
+                                            System.out.println("Your withdraw is confirmed!\n");
                                             System.out.println("Current Balance: USD " + MorganStanley.Ana.anaAccount.getBalance() + ".\n");
                                         }
                                         break;
                                     case 4:
-                                        System.out.println("Testing Transfer!");
+                                        System.out.println("Important notice:");
+                                        System.out.println("Transferring money to another account tax is USD 100.");
                                         System.out.println("Your current balance is USD " + MorganStanley.Ana.anaAccount.getBalance() + ".\n");
                                         System.out.println("Insert transfer amount (USD)");
                                         float moneyAmountTransfer = myScanner.nextFloat();
                                         myScanner = new Scanner(System.in);
                                         MorganStanley.Ana.anaAccount.transferMoneyOut(moneyAmountTransfer);
                                         MorganStanley.Maria.mariaAccount.depositMoney(moneyAmountTransfer);
-                                        System.out.println("Money transfer confirmed!\n");
+                                        System.out.println("Your transfer is confirmed!\n");
                                         System.out.println("Current Balance: USD " + MorganStanley.Ana.anaAccount.getBalance() + ".\n");
                                         break;
                                     case 5:
