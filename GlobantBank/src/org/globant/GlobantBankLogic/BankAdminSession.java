@@ -37,8 +37,8 @@ public class BankAdminSession {
         }
     }
 
-    public boolean deleteUser(int index){
-        return BankDataBase.deleteEntry(index);
+    public boolean deleteUser(int id){
+        return BankDataBase.deleteEntry(id);
     }
 
     public void listAllUsers(){

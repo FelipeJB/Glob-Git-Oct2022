@@ -36,14 +36,15 @@ public class BankDataBase {
 
     }
 
-    public static boolean deleteEntry(int index){
-        if (index + 1 > allAccounts.size() && index < 0){
-            return false;
-        } else {
-            allUsers.remove(index - 1);
-            allAccounts.remove(index - 1);
-            return true;
+    public static boolean deleteEntry(int id){
+        for (int i = 0; i < getAllAccounts().size(); i++) {
+            if (allUsers.get(i).getId() == id) {
+                allUsers.remove(i);
+                allAccounts.remove(i);
+                return true;
+            }
         }
+        return false;
     }
 
     public static boolean modifyEntryBalance(int index, float amount){
@@ -58,5 +59,14 @@ public class BankDataBase {
             return false;
         }
 
+    }
+
+    public static int findAccountIndex(int accountNumber){
+        for (int i = 0; i < allAccounts.size(); i++){
+            if (allAccounts.get(i).getAccountNumber() == accountNumber){
+                return i;
+            }
+        }
+        return -1;
     }
 }
