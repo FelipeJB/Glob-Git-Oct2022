@@ -1,35 +1,30 @@
 package src;
 
 import jdk.internal.org.objectweb.asm.tree.analysis.Analyzer;
-
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Bank MorganStanley = new Bank("Morgan Stanley");
         System.out.println("Welcome to " + MorganStanley.getName());
-
-        HashMap<String, String> users = new HashMap<>();
-        users.put(MorganStanley.Ana.getUser(), MorganStanley.Ana.getPassword());
         Scanner myScanner = new Scanner(System.in);
-        System.out.println("Enter user name");
-        String tempUser = myScanner.nextLine();
-        myScanner = new Scanner(System.in);
-        for  (String i : users.keySet()) {
-            if (i != tempUser) {
-                System.out.println("Invalid user name. Try again!\n");
-            } else {
-                tempUser = MorganStanley.Ana.getUser();
-                System.out.println("Enter password");
-                String tempPassword = myScanner.nextLine();
-                myScanner = new Scanner(System.in);
-                if (MorganStanley.Ana.getPassword() != tempPassword ) {
-                    System.out.println("Invalid password. Try again!\n");
-                }
+        int authentication = 0;
+        do {
+            System.out.println("Enter user name");
+            String tempUser = myScanner.nextLine();
+            myScanner = new Scanner(System.in);
+            System.out.println("Enter password");
+            String tempPassword = myScanner.nextLine();
+            myScanner = new Scanner(System.in);
+            if (tempUser.equals(MorganStanley.Ana.getUser()) && tempPassword.equals(MorganStanley.Ana.getPassword())) {
+                System.out.println("Authentication Successful.\n");
                 System.out.println("Welcome " + MorganStanley.Ana.getUser() + ".\n");
+                authentication = 1;
+            } else {
+                System.out.println(("User name / Password not matching. Try again.\n"));
             }
-        }
+        } while (authentication == 0);
+
         int option;
         do {
             System.out.println("Select your option");

@@ -10,6 +10,6 @@ public class Bank {
 
     public String getName() { return this.name; }
 
-    Client Ana = new Client(123, "Ana", "dad$%&$");
+    Client Ana = new Client(123, "Ana", "Ken");
 
 }
