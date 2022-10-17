@@ -90,4 +90,17 @@ public class Bank {
             }
         } while (authentication == 0);
     }
+
+    public void userDeposit(){
+        Scanner myScanner = new Scanner(System.in);
+        System.out.println("Important notice:");
+        System.out.println("Adding money to the account does not have any cost.");
+        System.out.println("Your current balance is USD " + Ana.anaAccount.getBalance() + ".\n");
+        System.out.println("Insert deposit amount (USD)");
+        float moneyAmount = myScanner.nextFloat();
+        myScanner = new Scanner(System.in);
+        Ana.anaAccount.depositMoney(moneyAmount);
+        System.out.println("Your deposit is confirmed!\n");
+        System.out.println("Current Balance: USD " + Ana.anaAccount.getBalance() + ".\n");
+    }
 }

@@ -46,15 +46,7 @@ public class Main {
                                         System.out.println("Your current balance is USD " + MorganStanley.Ana.anaAccount.getBalance() + ".\n");
                                         break;
                                     case 2:
-                                        System.out.println("Important notice:");
-                                        System.out.println("Adding money to the account does not have any cost.");
-                                        System.out.println("Your current balance is USD " + MorganStanley.Ana.anaAccount.getBalance() + ".\n");
-                                        System.out.println("Insert deposit amount (USD)");
-                                        float moneyAmount = myScanner.nextFloat();
-                                        myScanner = new Scanner(System.in);
-                                        MorganStanley.Ana.anaAccount.depositMoney(moneyAmount);
-                                        System.out.println("Your deposit is confirmed!\n");
-                                        System.out.println("Current Balance: USD " + MorganStanley.Ana.anaAccount.getBalance() + ".\n");
+                                        MorganStanley.userDeposit();
                                         break;
                                     case 3:
                                         System.out.println("Important notice:");
