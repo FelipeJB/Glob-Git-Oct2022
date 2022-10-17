@@ -22,12 +22,12 @@ public class Account {
     }
 
     public boolean withdraw(Double amountToWithdraw) {
-        if (amountToWithdraw > 0 && amountToWithdraw <= (accountBalance * 0.75)) {
-            if (amountToWithdraw <= 1000) {
+        if (amountToWithdraw > 0 && accountBalance > 200 && amountToWithdraw <= (accountBalance * 0.76)) {
+            if (amountToWithdraw <= 1000 && (accountBalance - (amountToWithdraw + 200)) >= 0) {
                 accountBalance -= (amountToWithdraw + 200);
                 return true;
             }
-            if (amountToWithdraw > 1001) {
+            if (amountToWithdraw > 1001 && (accountBalance - (amountToWithdraw + 200 + (amountToWithdraw * 0.15))) >= 0) {
                 accountBalance -= (amountToWithdraw + 200 + (amountToWithdraw * 0.15));
                 return true;
             }

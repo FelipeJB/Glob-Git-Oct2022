@@ -57,7 +57,7 @@ public class Main {
     }
 
     private static void createInitialAccounts(Bank bank) {
-        Account newAccount = new Account(new Date(), 1465.0);
+        Account newAccount = new Account(new Date(), 1500.0);
         User newUser = new User("lilo", "abc", newAccount);
         bank.addCustomer(newUser);
         Account newAccount1 = new Account(new Date(), 500.0);
