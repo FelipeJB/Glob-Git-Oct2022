@@ -170,8 +170,9 @@ public class Main {
                 System.out.println("Invalid amount, please try again");
             }
         }
-        bank.getClientList().remove(user);
-        Client destinationUser = selectDestination(bank.getClientList());
+        ArrayList<Client> shortList = (ArrayList<Client>) bank.getClientList().clone();
+        shortList.remove(user);
+        Client destinationUser = selectDestination(shortList);
         boolean success = bank.transferFunds(user, destinationUser, amount);
         if(success){
             System.out.println("Your new balance is $" + user.getAccount().getAccountBalance());
