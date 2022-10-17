@@ -44,7 +44,7 @@ public class BankUserSession {
 
         for (int i = 0; i < users.size(); i++){
             User currentUser = users.get(i);
-            if (currentUser.getUserName() == user){
+            if (currentUser.getUserName().equals(user)){
                 return currentUser.confirmPassword(password);
             }
         }
@@ -56,7 +56,7 @@ public class BankUserSession {
 
         for (int i = 0; i < users.size(); i++){
             User currentUser = users.get(i);
-            if (currentUser.getUserName() == user){
+            if (currentUser.getUserName().equals(user)){
                 return i;
             }
         }
@@ -73,7 +73,7 @@ public class BankUserSession {
         if (amount < 0){
             return "Invalid amount. Please use a positive number";
         } else if (amount < 1000) {
-            float taxedAmount = amount + 200;
+            float taxedAmount = (amount + 200)* -1;
             if (BankDataBase.modifyEntryBalance(this.getIndex(), taxedAmount)){
                 BankDataBase.modifyEntryBalance(this.getIndex(), taxedAmount);
                 return "Transaction Completed.";
@@ -81,7 +81,7 @@ public class BankUserSession {
                 return "Not enough funds, remember a tax of $200 will be deducted";
             }
         } else {
-            float taxedAmount = (float) (amount + (amount * 0.15) + 200);
+            float taxedAmount = (float) (amount + (amount * 0.15) + 200) * -1;
             if (BankDataBase.modifyEntryBalance(this.getIndex(), taxedAmount)){
                 BankDataBase.modifyEntryBalance(this.getIndex(), taxedAmount);
                 return "Transaction Completed.";
@@ -102,7 +102,7 @@ public class BankUserSession {
                 BankDataBase.modifyEntryBalance(receivingAccountIndex, amount);
                 return "Transaction Completed.";
             } else {
-                return "You don't have enough funds.";
+                return "You don't have enough funds, remember there is a transaction cost of $100";
             }
         } else {
             return "Account not found.";
