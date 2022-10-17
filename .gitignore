@@ -29,4 +29,7 @@ bin/
 .DS_Store
 
 ###
-/GlobantBank/
+/Globant Bank/
+/src/Globant Bank.iml
+/src/Readme.txt
+/src/.gitignore
