@@ -1,10 +1,12 @@
+import java.util.Date;
+
 public class Account {
     public int id;
-    public String openingDate;
-    public Double balance;
+    public Date openingDate;
+    public float balance;
     public static int idCounter;
 
-    public Account(String openingDate, Double balance) {
+    public Account(float balance, Date openingDate ) {
         this.id = idCounter;
         idCounter++;
         this.openingDate = openingDate;
@@ -42,5 +44,12 @@ public class Account {
         }
         this.balance -= amount;
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "id:" + id +
+                " Opening date: " + openingDate +
+                " Balance: $" + balance + "\n";
     }
 }
