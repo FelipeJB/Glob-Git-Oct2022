@@ -1,11 +1,12 @@
-public class account {
+public class Account {
     public int id;
     public String openingDate;
     public Double balance;
-    public int idCounter;
+    public static int idCounter;
 
-    public account(int number, String openingDate, Double balance) {
-        this.id = number;
+    public Account(String openingDate, Double balance) {
+        this.id = idCounter;
+        idCounter++;
         this.openingDate = openingDate;
         this.balance = balance;
     }
@@ -30,13 +31,16 @@ public class account {
         return receipt;
     }
 
-    public String addMoney(){
-
-        return null;
+    public String addMoney(float amount){
+        this.balance += amount;
+        return "money added successfully \n Your new balance is: " + this.balance ;
     }
 
-    public String transferMoney(){
-
-        return null;
+    public Boolean retrieveMoney(float amount){
+        if (this.balance < amount){
+            return false;
+        }
+        this.balance -= amount;
+        return true;
     }
 }
