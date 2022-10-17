@@ -40,10 +40,13 @@ public class SavingsAccount {
     // ------------- METHODS -----------------
 
     public boolean updateBalance(float amount){
-        if (this.balance + amount < 0){
+        float balancePlaceHolder;
+
+        balancePlaceHolder = this.getBalance();
+        if (balancePlaceHolder + amount < 0){
             return false;
         } else {
-            this.balance = this.balance + amount;
+            this.balance = this.getBalance() + amount;
             return true;
         }
     }

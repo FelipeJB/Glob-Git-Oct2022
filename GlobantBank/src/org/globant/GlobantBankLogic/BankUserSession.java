@@ -75,18 +75,19 @@ public class BankUserSession {
         } else if (amount < 1000) {
             float taxedAmount = (amount + 200)* -1;
             if (BankDataBase.modifyEntryBalance(this.getIndex(), taxedAmount)){
-                BankDataBase.modifyEntryBalance(this.getIndex(), taxedAmount);
-                return "Transaction Completed.";
+                // BankDataBase.modifyEntryBalance(this.getIndex(), taxedAmount);
+                return "Transaction Completed. A tax for $200 was deducted";
             } else {
                 return "Not enough funds, remember a tax of $200 will be deducted";
             }
         } else {
+            float tax = (float) ((amount * 0.15) + 200);
             float taxedAmount = (float) (amount + (amount * 0.15) + 200) * -1;
             if (BankDataBase.modifyEntryBalance(this.getIndex(), taxedAmount)){
-                BankDataBase.modifyEntryBalance(this.getIndex(), taxedAmount);
-                return "Transaction Completed.";
+                // BankDataBase.modifyEntryBalance(this.getIndex(), taxedAmount);
+                return "Transaction Completed. A tax for: $" + tax + " Was deducted.";
             } else {
-                return "Not enough funds, remember a tax of $" + taxedAmount + " will be deducted";
+                return "Not enough funds, remember a tax of $" + tax + " will be deducted";
             }
         }
     }
@@ -98,9 +99,8 @@ public class BankUserSession {
 
         if ( receivingAccountIndex >= 0){
             if (BankDataBase.modifyEntryBalance(this.index, amountToSubtract)){
-                BankDataBase.modifyEntryBalance(this.index, amountToSubtract);
                 BankDataBase.modifyEntryBalance(receivingAccountIndex, amount);
-                return "Transaction Completed.";
+                return "Transaction Completed. An additional tax of $100 was charged.";
             } else {
                 return "You don't have enough funds, remember there is a transaction cost of $100";
             }

@@ -24,6 +24,7 @@ public class Main {
             option = Reader.intScanner();
 
             if (option > 0 && option < 4){
+                // ------------------------- 1. ACCESS USER ACCOUNT -------------------------
                 if (option == 1){
 
                     boolean userIterator = true;
@@ -59,6 +60,7 @@ public class Main {
 
                                 if (userOption > 0 && userOption < 5){
                                     if (userOption == 1){
+                                        // **************** 1. DEPOSIT ****************
                                         float deposit;
 
                                         System.out.println("How much do you wish to deposit?");
@@ -71,6 +73,7 @@ public class Main {
                                             System.out.println("Transaction failed: Invalid amount");
                                         }
                                     } else if (userOption == 2) {
+                                        // **************** 2. WITHDRAW ****************
                                         float withdraw;
 
                                         System.out.println("How much do you wish to withdraw?");
@@ -78,6 +81,7 @@ public class Main {
 
                                         System.out.println(userSession.withdraw(withdraw));
                                     } else if (userOption == 3) {
+                                        // **************** 3. TRANSFER ****************
                                         float transferAmount;
                                         int recipientAccount;
 
@@ -92,6 +96,7 @@ public class Main {
                                             System.out.println("Invalid amount.");
                                         }
                                     } else {
+                                        // **************** 4. EXIT ****************
                                         System.out.println("Going back to Main Menu.");
                                         userIterator = false;
                                     }
@@ -103,7 +108,7 @@ public class Main {
                         }
                     }
                 } else if (option == 2) {
-
+                    // ------------------------- 2. ACCESS ADMIN ACCOUNT -------------------------
                     boolean adminIterator = true;
 
                     while (adminIterator){
@@ -136,6 +141,7 @@ public class Main {
                             
                             if (adminOption > 0 && adminOption < 5){
                                 if (adminOption == 1) {
+                                    // **************** 1. CREATE USER ****************
                                     String userName;
                                     int password;
                                     float balance;
@@ -151,6 +157,7 @@ public class Main {
                                     System.out.println("User: " + userName + " created.");
                                     
                                 } else if (adminOption == 2) {
+                                    // **************** 2. DELETE USER ****************
                                     int id;
 
                                     System.out.println("Please enter the user id of the user you wish to delete:");
@@ -165,6 +172,7 @@ public class Main {
                                 } else if (adminOption == 3) {
                                     adminSession.listAllUsers();
                                 } else {
+                                    // **************** 3. EXIT ****************
                                     System.out.println("Going back to Main Menu.");
                                     adminIterator = false;
                                 }
@@ -172,6 +180,7 @@ public class Main {
                         }
                     }
                 } else {
+                    // ------------------------- 3. EXIT BANK -------------------------
                     System.out.println("Good Bye!");
                     iterator = false;
                 }

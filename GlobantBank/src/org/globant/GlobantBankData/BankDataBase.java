@@ -48,17 +48,14 @@ public class BankDataBase {
     }
 
     public static boolean modifyEntryBalance(int index, float amount){
-
         SavingsAccount updatedAccount = allAccounts.get(index);
 
         if (updatedAccount.updateBalance(amount)){
-            updatedAccount.updateBalance(amount);
             allAccounts.set(index, updatedAccount);
             return true;
         } else {
             return false;
         }
-
     }
 
     public static int findAccountIndex(int accountNumber){
