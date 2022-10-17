@@ -51,23 +51,43 @@ public class Bank {
         } while (optionBank != 2);
     }
 
-        public void bankUserLogin() {
-            int authenticationBank = 0;
-            Scanner myScanner = new Scanner(System.in);
-            do {
-                System.out.println("Enter user name");
-                String tempUser = myScanner.nextLine();
-                myScanner = new Scanner(System.in);
-                System.out.println("Enter password");
-                String tempPassword = myScanner.nextLine();
-                myScanner = new Scanner(System.in);
-                if (tempUser.equals(BankMs.getUser()) && tempPassword.equals(BankMs.getPassword())) {
-                    System.out.println("Authentication Successful.\n");
-                    System.out.println("Welcome " + BankMs.getUser() + ".\n");
-                    authenticationBank = 1;
-                } else {
-                    System.out.println(("User name / Password not matching. Try again.\n"));
-                }
-            } while (authenticationBank == 0);
-        }
+    public void bankUserLogin() {
+        int authenticationBank = 0;
+        Scanner myScanner = new Scanner(System.in);
+        do {
+            System.out.println("Enter user name");
+            String tempUser = myScanner.nextLine();
+            myScanner = new Scanner(System.in);
+            System.out.println("Enter password");
+            String tempPassword = myScanner.nextLine();
+            myScanner = new Scanner(System.in);
+            if (tempUser.equals(BankMs.getUser()) && tempPassword.equals(BankMs.getPassword())) {
+                System.out.println("Authentication Successful.\n");
+                System.out.println("Welcome " + BankMs.getUser() + ".\n");
+                authenticationBank = 1;
+            } else {
+                System.out.println(("User name / Password not matching. Try again.\n"));
+            }
+        } while (authenticationBank == 0);
+    }
+
+    public void clientUserLogin() {
+        int authentication = 0;
+        Scanner myScanner = new Scanner(System.in);
+        do {
+            System.out.println("Enter user name");
+            String tempUser = myScanner.nextLine();
+            myScanner = new Scanner(System.in);
+            System.out.println("Enter password");
+            String tempPassword = myScanner.nextLine();
+            myScanner = new Scanner(System.in);
+            if (tempUser.equals(Ana.getUser()) && tempPassword.equals(Ana.getPassword())) {
+                System.out.println("Authentication Successful.\n");
+                System.out.println("Welcome " + Ana.getUser() + ".\n");
+                authentication = 1;
+            } else {
+                System.out.println(("User name / Password not matching. Try again.\n"));
+            }
+        } while (authentication == 0);
+    }
 }

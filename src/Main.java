@@ -27,22 +27,7 @@ public class Main {
                         MorganStanley.clientInformation();
                         break;
                     case 2:
-                        int authentication = 0;
-                        do {
-                            System.out.println("Enter user name");
-                            String tempUser = myScanner.nextLine();
-                            myScanner = new Scanner(System.in);
-                            System.out.println("Enter password");
-                            String tempPassword = myScanner.nextLine();
-                            myScanner = new Scanner(System.in);
-                            if (tempUser.equals(MorganStanley.Ana.getUser()) && tempPassword.equals(MorganStanley.Ana.getPassword())) {
-                                System.out.println("Authentication Successful.\n");
-                                System.out.println("Welcome " + MorganStanley.Ana.getUser() + ".\n");
-                                authentication = 1;
-                            } else {
-                                System.out.println(("User name / Password not matching. Try again.\n"));
-                            }
-                        } while (authentication == 0);
+                        MorganStanley.clientUserLogin();
                         int option;
                         do {
                             System.out.println("Select your option");
