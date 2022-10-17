@@ -103,4 +103,24 @@ public class Bank {
         System.out.println("Your deposit is confirmed!\n");
         System.out.println("Current Balance: USD " + Ana.anaAccount.getBalance() + ".\n");
     }
+
+
+
+    public void userTransfer() {
+        Scanner myScanner = new Scanner(System.in);
+        System.out.println("Important notice:");
+        System.out.println("Transferring money to another account tax is USD 100.");
+        System.out.println("Your current balance is USD " + Ana.anaAccount.getBalance() + ".\n");
+        System.out.println("Insert transfer amount (USD)");
+        float moneyAmountTransfer = myScanner.nextFloat();
+        myScanner = new Scanner(System.in);
+        Ana.anaAccount.transferMoneyOut(moneyAmountTransfer);
+        Maria.mariaAccount.depositMoney(moneyAmountTransfer);
+        System.out.println("Your transfer is confirmed!\n");
+        System.out.println("Current Balance: USD " + Ana.anaAccount.getBalance() + ".\n");
+    }
+
+
+
+
 }

@@ -66,16 +66,7 @@ public class Main {
                                         }
                                         break;
                                     case 4:
-                                        System.out.println("Important notice:");
-                                        System.out.println("Transferring money to another account tax is USD 100.");
-                                        System.out.println("Your current balance is USD " + MorganStanley.Ana.anaAccount.getBalance() + ".\n");
-                                        System.out.println("Insert transfer amount (USD)");
-                                        float moneyAmountTransfer = myScanner.nextFloat();
-                                        myScanner = new Scanner(System.in);
-                                        MorganStanley.Ana.anaAccount.transferMoneyOut(moneyAmountTransfer);
-                                        MorganStanley.Maria.mariaAccount.depositMoney(moneyAmountTransfer);
-                                        System.out.println("Your transfer is confirmed!\n");
-                                        System.out.println("Current Balance: USD " + MorganStanley.Ana.anaAccount.getBalance() + ".\n");
+                                        MorganStanley.userTransfer();
                                         break;
                                     case 5:
                                         System.out.println("Have a great day!\n");
