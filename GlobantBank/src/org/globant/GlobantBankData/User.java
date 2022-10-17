@@ -8,13 +8,13 @@ public class User {
     public static int counter = 1;
 
     private String userName;
-    private String password;
+    private int password;
     private int id;
     private SavingsAccount account;
 
     // ----------- CONSTRUCTOR --------------
 
-    public User(String userName, String password, float balance) {
+    public User(String userName, int password, float balance) {
         this.userName = userName;
         this.password = password;
         this.account = new SavingsAccount(balance);
@@ -40,7 +40,7 @@ public class User {
 
     // ------------ METHODS --------------
 
-    public boolean confirmPassword(String passwordAttempt){
+    public boolean confirmPassword(int passwordAttempt){
         if (this.password == passwordAttempt){
             return true;
         } else {

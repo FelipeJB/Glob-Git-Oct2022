@@ -14,7 +14,7 @@ public class BankUserSession {
 
     // ------------ CONSTRUCTOR ----------
 
-    public BankUserSession(String user, String password){
+    public BankUserSession(String user, int password){
 
         this.user = user;
         this.authentication = this.setUserAuthentication(user, password);
@@ -38,7 +38,7 @@ public class BankUserSession {
 
     // -------------- SETTERS --------------
 
-    public boolean setUserAuthentication(String user, String password){
+    public boolean setUserAuthentication(String user, int password){
 
         List<User> users = BankDataBase.getAllUsers();
 
