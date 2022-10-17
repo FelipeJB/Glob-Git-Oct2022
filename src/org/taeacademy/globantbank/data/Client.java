@@ -1,4 +1,4 @@
-package taeacademy.globantbank.data;
+package org.taeacademy.globantbank.data;
 
 public class Client {
 

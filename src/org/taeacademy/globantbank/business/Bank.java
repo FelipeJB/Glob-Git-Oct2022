@@ -1,6 +1,6 @@
-package taeacademy.globantbank.business;
+package org.taeacademy.globantbank.business;
 
-import taeacademy.globantbank.data.Client;
+import org.taeacademy.globantbank.data.Client;
 import java.util.ArrayList;
 
 public class Bank {
