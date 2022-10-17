@@ -36,12 +36,12 @@ public class Bank {
                         float anaAccountNumber = Ana.anaAccount.getAccountNumber();
                         LocalDate anaOpeningDate = Ana.anaAccount.getOpeningDate();
                         float anaBalance = Ana.anaAccount.getBalance();
-                        System.out.println("Client name: " + anaUser + " |" + " Account number: " + anaAccountNumber + " |" + " Opening date: "+ anaOpeningDate + " |" + " Balance: " + anaBalance + ".\n");
+                        System.out.println("Client name: " + anaUser + " |" + " Account number: " + anaAccountNumber + " |" + " Opening date: "+ anaOpeningDate + " |" + " Balance: USD" + anaBalance + ".\n");
                         String mariaUser = Maria.getName();
                         float mariaAccountNumber = Maria.mariaAccount.getAccountNumber();
                         LocalDate mariaOpeningDate = Maria.mariaAccount.getOpeningDate();
                         float mariaBalance = Maria.mariaAccount.getBalance();
-                        System.out.println("Client name: " + mariaUser + " | " + " Account number: " + mariaAccountNumber + " |" + " Opening date: " + mariaOpeningDate + " |" + " Balance: " + mariaBalance + ".\n");
+                        System.out.println("Client name: " + mariaUser + " | " + " Account number: " + mariaAccountNumber + " |" + " Opening date: " + mariaOpeningDate + " |" + " Balance: USD" + mariaBalance + ".\n");
                         break;
                     case 2:
                         System.out.println("Have a great day!\n");
@@ -51,7 +51,23 @@ public class Bank {
         } while (optionBank != 2);
     }
 
-
-
-
+        public void bankUserLogin() {
+            int authenticationBank = 0;
+            Scanner myScanner = new Scanner(System.in);
+            do {
+                System.out.println("Enter user name");
+                String tempUser = myScanner.nextLine();
+                myScanner = new Scanner(System.in);
+                System.out.println("Enter password");
+                String tempPassword = myScanner.nextLine();
+                myScanner = new Scanner(System.in);
+                if (tempUser.equals(BankMs.getUser()) && tempPassword.equals(BankMs.getPassword())) {
+                    System.out.println("Authentication Successful.\n");
+                    System.out.println("Welcome " + BankMs.getUser() + ".\n");
+                    authenticationBank = 1;
+                } else {
+                    System.out.println(("User name / Password not matching. Try again.\n"));
+                }
+            } while (authenticationBank == 0);
+        }
 }

@@ -23,22 +23,7 @@ public class Main {
             } else if (bankAuth >= 1 && bankAuth <= 3) {
                 switch (bankAuth) {
                     case 1:
-                        int authenticationBank = 0;
-                        do {
-                            System.out.println("Enter user name");
-                            String tempUser = myScanner.nextLine();
-                            myScanner = new Scanner(System.in);
-                            System.out.println("Enter password");
-                            String tempPassword = myScanner.nextLine();
-                            myScanner = new Scanner(System.in);
-                            if (tempUser.equals(MorganStanley.BankMs.getUser()) && tempPassword.equals(MorganStanley.BankMs.getPassword())) {
-                                System.out.println("Authentication Successful.\n");
-                                System.out.println("Welcome " + MorganStanley.BankMs.getUser() + ".\n");
-                                authenticationBank = 1;
-                            } else {
-                                System.out.println(("User name / Password not matching. Try again.\n"));
-                            }
-                        } while (authenticationBank == 0);
+                        MorganStanley.bankUserLogin();
                         MorganStanley.clientInformation();
                         break;
                     case 2:
