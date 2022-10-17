@@ -1,8 +1,5 @@
 package src;
 
-import jdk.internal.org.objectweb.asm.tree.analysis.Analyzer;
-
-import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Main {
@@ -49,21 +46,7 @@ public class Main {
                                         MorganStanley.userDeposit();
                                         break;
                                     case 3:
-                                        System.out.println("Important notice:");
-                                        System.out.println("Withdrawals tax is USD 200 for amounts less than USD 1000.");
-                                        System.out.println("Withdrawals of USD 1000 or more, withdrawals tax is USD 200 plus 15% of the amount to withdraw.");
-                                        System.out.println("Your current balance is USD " + MorganStanley.Ana.anaAccount.getBalance() + ".\n");
-                                        System.out.println("Insert withdraw amount (USD)");
-                                        float moneyAmountW = myScanner.nextFloat();
-                                        myScanner = new Scanner(System.in);
-                                        if (moneyAmountW > MorganStanley.Ana.anaAccount.balance) {
-                                            System.out.println("Withdraw amount cannot be higher than balance account.\n");
-                                            System.out.println("Current Balance: USD " + MorganStanley.Ana.anaAccount.getBalance() + ".\n");
-                                        } else {
-                                            MorganStanley.Ana.anaAccount.withdrawMoney(moneyAmountW);
-                                            System.out.println("Your withdraw is confirmed!\n");
-                                            System.out.println("Current Balance: USD " + MorganStanley.Ana.anaAccount.getBalance() + ".\n");
-                                        }
+                                        MorganStanley.userWithdraw();
                                         break;
                                     case 4:
                                         MorganStanley.userTransfer();

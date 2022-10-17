@@ -23,13 +23,11 @@ public class BankAccount {
 
     public float withdrawMoney(float moneyAmount) {
         float taxPlus = (float) ((15.0 / 100) * moneyAmount);
-
-
-
+        float discount = 200 - taxPlus;
         if (moneyAmount < 1000 && moneyAmount > 0) {
             balance = this.balance - moneyAmount - 200;
         } else if (moneyAmount >= 1000 ){
-            balance = this.balance - moneyAmount - 200 - taxPlus;
+            balance = this.balance - moneyAmount - discount;
         }
         return balance;
         }

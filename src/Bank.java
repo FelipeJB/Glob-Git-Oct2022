@@ -98,10 +98,29 @@ public class Bank {
         System.out.println("Your current balance is USD " + Ana.anaAccount.getBalance() + ".\n");
         System.out.println("Insert deposit amount (USD)");
         float moneyAmount = myScanner.nextFloat();
-        myScanner = new Scanner(System.in);
+        // myScanner = new Scanner(System.in);
         Ana.anaAccount.depositMoney(moneyAmount);
         System.out.println("Your deposit is confirmed!\n");
         System.out.println("Current Balance: USD " + Ana.anaAccount.getBalance() + ".\n");
+    }
+
+    public void userWithdraw() {
+        Scanner myScanner = new Scanner(System.in);
+        System.out.println("Important notice:");
+        System.out.println("Withdrawals tax is USD 200 for amounts less than USD 1000.");
+        System.out.println("Withdrawals of USD 1000 or more, withdrawals tax is USD 200 plus 15% of the amount to withdraw.");
+        System.out.println("Your current balance is USD " + Ana.anaAccount.getBalance() + ".\n");
+        System.out.println("Insert withdraw amount (USD)");
+        float moneyAmountW = myScanner.nextFloat();
+        // myScanner = new Scanner(System.in);
+        if (moneyAmountW > Ana.anaAccount.balance) {
+            System.out.println("Withdraw amount cannot be higher than balance account.\n");
+            System.out.println("Current Balance: USD " + Ana.anaAccount.getBalance() + ".\n");
+        } else {
+            Ana.anaAccount.withdrawMoney(moneyAmountW);
+            System.out.println("Your withdraw is confirmed!\n");
+            System.out.println("Current Balance: USD " + Ana.anaAccount.getBalance() + ".\n");
+        }
     }
 
 
@@ -113,7 +132,7 @@ public class Bank {
         System.out.println("Your current balance is USD " + Ana.anaAccount.getBalance() + ".\n");
         System.out.println("Insert transfer amount (USD)");
         float moneyAmountTransfer = myScanner.nextFloat();
-        myScanner = new Scanner(System.in);
+        // myScanner = new Scanner(System.in);
         Ana.anaAccount.transferMoneyOut(moneyAmountTransfer);
         Maria.mariaAccount.depositMoney(moneyAmountTransfer);
         System.out.println("Your transfer is confirmed!\n");
