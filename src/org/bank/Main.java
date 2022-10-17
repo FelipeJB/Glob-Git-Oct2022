@@ -12,9 +12,8 @@ public class Main {
 
         Bank bank = new Bank("Globank");
         createInitialAccounts(bank);
-        String message = "";
 
-        System.out.println(" «« Welcome to " + bank.getBankName()  + " »» ");
+        System.out.println(" «« Welcome to " + bank.getBankName() + " »» ");
 
         do {
             System.out.println("\n Choose one option : \n" +
@@ -29,24 +28,25 @@ public class Main {
                         System.out.println("******** Collaborator's section ********\t");
                         int selectedByCollaborator = loginForCollaborator();
                         if (selectedByCollaborator > 3 && selectedByCollaborator < 6) {
-                            if (selectedByCollaborator == 4) {
-                                message = triggerAddCustomer(bank);
-                                System.out.println(">>>>>>>> " + message + " <<<<<<<< \n");
-                                System.out.println(comingBackMessage());
-                            }
-                            if (selectedByCollaborator == 5) {
-                                System.out.println("OPEN ACCOUNTS: \n");
-                                for (User customer : bank.getBankCustomers()) {
-                                    System.out.println(customer + "\n");
-                                }
-                                System.out.println(comingBackMessage());
-                            }
+                            triggerActionSelectedByCollaborator(selectedByCollaborator, bank);
                         } else {
                             System.out.println(comingBackMessage());
                         }
                         break;
                     case 2:
                         System.out.println("******** Customer's section ********\t");
+                        User user = loginForCustomer(bank);
+                        if (user != null) {
+                            int selectedByCustomer = showCustomerOptions();
+                            if (selectedByCustomer > 3 && selectedByCustomer < 8) {
+                                triggerActionSelectedByCustomer(selectedByCustomer, bank, user);
+                            } else {
+                                System.out.println(comingBackMessage());
+                            }
+                        } else {
+                            System.out.println("\n Try again \n");
+                            System.out.println(comingBackMessage());
+                        }
                         break;
                     default:
                         System.out.println("-------- Incorrect option --------\t");
@@ -58,10 +58,10 @@ public class Main {
 
     private static void createInitialAccounts(Bank bank) {
         Account newAccount = new Account(new Date(), 1465.0);
-        User newUser = new User("lili", "abc", newAccount);
+        User newUser = new User("lilo", "abc", newAccount);
         bank.addCustomer(newUser);
         Account newAccount1 = new Account(new Date(), 500.0);
-        User newUser1 = new User("pepe", "abc", newAccount1);
+        User newUser1 = new User("mike", "abc", newAccount1);
         bank.addCustomer(newUser1);
     }
 
@@ -69,9 +69,12 @@ public class Main {
         return ">>>>>>>> Coming back to principal menu <<<<<<<<";
     }
 
+    // --------- collaborator section --------- //
+
     private static int loginForCollaborator() {
-        System.out.println("Type your password");
         Scanner scan = new Scanner(System.in);
+
+        System.out.println("Type your password");
         String password = scan.nextLine();
 
         if (password.equals("globant")) {
@@ -88,6 +91,21 @@ public class Main {
                 " 5. Customers information \n" +
                 " 6. Go back \n");
         return scan.nextInt();
+    }
+
+    private static void triggerActionSelectedByCollaborator(int selectedByCollaborator, Bank bank) {
+        if (selectedByCollaborator == 4) {
+            String message = triggerAddCustomer(bank);
+            System.out.println(">>>>>>>> " + message + " <<<<<<<< \n");
+            System.out.println(comingBackMessage());
+        }
+        if (selectedByCollaborator == 5) {
+            System.out.println("OPEN ACCOUNTS: \n");
+            for (User customer : bank.getBankCustomers()) {
+                System.out.println(customer + "\n");
+            }
+            System.out.println(comingBackMessage());
+        }
     }
 
     private static String triggerAddCustomer(Bank bank) {
@@ -110,6 +128,129 @@ public class Main {
             return "Successful creation";
         } catch (java.util.InputMismatchException e) {
             return "Failed creation";
+        }
+    }
+
+    // --------- customer section --------- //
+    private static User loginForCustomer(Bank bank) {
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("Type username");
+        String username = scan.nextLine();
+
+        System.out.println("Type password");
+        String password = scan.nextLine();
+
+        for (User customer : bank.getBankCustomers()) {
+            if (username.equals(customer.getUsername()) && password.equals(customer.getPassword())) {
+                return customer;
+            }
+        }
+
+        return null;
+    }
+
+    private static int showCustomerOptions() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("\n Options for customer : \n" +
+                " 4. Withdraw money \n" +
+                " 5. Deposit money \n" +
+                " 6. Transfer money \n" +
+                " 7. Check my account info \n" +
+                " 8. Go back \n");
+        return scan.nextInt();
+    }
+
+    private static void triggerActionSelectedByCustomer(int selectedByCustomer, Bank bank, User user) {
+        String message = "";
+
+        if (selectedByCustomer == 4) {
+            message = triggerWithdrawMoney(user);
+            System.out.println(">>>>>>>> " + message + " <<<<<<<< \n");
+            System.out.println(comingBackMessage());
+        }
+        if (selectedByCustomer == 5) {
+            message = triggerDepositMoney(user);
+            System.out.println(">>>>>>>> " + message + " <<<<<<<< \n");
+            System.out.println(comingBackMessage());
+        }
+        if (selectedByCustomer == 6) {
+            message = triggerTransferMoney(bank, user);
+            System.out.println(">>>>>>>> " + message + " <<<<<<<< \n");
+            System.out.println(comingBackMessage());
+        }
+        if (selectedByCustomer == 7) {
+            System.out.println("My account info: \n");
+            System.out.println(user + "\n");
+            System.out.println(comingBackMessage());
+        }
+    }
+
+    private static String triggerWithdrawMoney(User user) {
+        Scanner scan = new Scanner(System.in);
+        try {
+            System.out.println("Type amount to withdraw");
+            Double amountToWithdraw = scan.nextDouble();
+
+            boolean statusWithdraw = user.getSavingsAccount().withdraw(amountToWithdraw);
+
+            if (statusWithdraw) {
+                return "Successful withdraw";
+            } else {
+                return "Failed withdraw check your balance";
+            }
+        } catch (java.util.InputMismatchException e) {
+            return "Failed withdraw";
+        }
+    }
+
+    private static String triggerDepositMoney(User user) {
+        Scanner scan = new Scanner(System.in);
+        try {
+            System.out.println("Type amount to deposit");
+            Double amountToDeposit = scan.nextDouble();
+
+            boolean statusDeposit = user.getSavingsAccount().deposit(amountToDeposit);
+
+            if (statusDeposit) {
+                return "Successful deposit";
+            } else {
+                return "Failed deposit";
+            }
+        } catch (java.util.InputMismatchException e) {
+            return "Failed deposit";
+        }
+    }
+
+    private static String triggerTransferMoney(Bank bank, User user) {
+        Scanner scan = new Scanner(System.in);
+        try {
+            System.out.println("Type account to transfer");
+            int accountToTransfer = scan.nextInt();
+
+            System.out.println("Type amount to transfer");
+            Double amountToTransfer = scan.nextDouble();
+
+            boolean statusTransfer = false;
+            boolean statusDeposit = false;
+            for (User customer : bank.getBankCustomers()) {
+                if (accountToTransfer == customer.getSavingsAccount().getAccountNumber()) {
+
+                    statusTransfer = user.getSavingsAccount().transfer(amountToTransfer);
+                    statusDeposit = customer.getSavingsAccount().deposit(amountToTransfer);
+
+                    if (statusTransfer && statusDeposit) {
+                        return "Successful transfer";
+                    } else {
+                        return "Failed transfer";
+                    }
+
+                }
+            }
+
+            return "Failed transfer";
+        } catch (java.util.InputMismatchException e) {
+            return "Failed transfer";
         }
     }
 }

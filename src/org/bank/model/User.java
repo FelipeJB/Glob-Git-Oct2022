@@ -14,13 +14,21 @@ public class User {
     }
 
     // methods
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
     public Account getSavingsAccount() {
         return savingsAccount;
     }
 
     @Override
     public String toString() {
-        return  "User = " + username + '\n' +
+        return "User = " + username + '\n' +
                 savingsAccount;
     }
 }

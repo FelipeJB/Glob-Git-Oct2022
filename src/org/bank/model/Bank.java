@@ -22,10 +22,6 @@ public class Bank {
         this.bankCustomers.add(user);
     }
 
-    public User getCustomer(int customerIndex) {
-        return this.bankCustomers.get(customerIndex);
-    }
-
     public ArrayList<User> getBankCustomers() {
         return bankCustomers;
     }

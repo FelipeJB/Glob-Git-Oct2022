@@ -21,7 +21,7 @@ public class Account {
         return accountNumber;
     }
 
-    public boolean withdraw(Integer amountToWithdraw) {
+    public boolean withdraw(Double amountToWithdraw) {
         if (amountToWithdraw > 0 && amountToWithdraw <= (accountBalance * 0.75)) {
             if (amountToWithdraw <= 1000) {
                 accountBalance -= (amountToWithdraw + 200);
@@ -35,9 +35,17 @@ public class Account {
         return false;
     }
 
-    public boolean deposit(Integer amountToDeposit) {
+    public boolean deposit(Double amountToDeposit) {
         if (amountToDeposit > 0) {
             accountBalance += amountToDeposit;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean transfer(Double amountToTransfer) {
+        if (amountToTransfer > 0 && amountToTransfer <= (accountBalance * 0.80)) {
+            accountBalance -= (amountToTransfer + 100);
             return true;
         }
         return false;
