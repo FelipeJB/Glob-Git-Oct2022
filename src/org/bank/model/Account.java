@@ -44,9 +44,11 @@ public class Account {
     }
 
     public boolean transfer(Double amountToTransfer) {
-        if (amountToTransfer > 0 && amountToTransfer <= (accountBalance * 0.80)) {
-            accountBalance -= (amountToTransfer + 100);
-            return true;
+        if (amountToTransfer > 0 &&  accountBalance > 100 && amountToTransfer <= accountBalance) {
+            if (accountBalance - (amountToTransfer + 100) >= 0) {
+                accountBalance -= (amountToTransfer + 100);
+                return true;
+            }
         }
         return false;
     }

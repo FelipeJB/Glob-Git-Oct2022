@@ -20,7 +20,13 @@ public class Main {
                     " 1. Bank's collaborator \n" +
                     " 2. Customer \n" +
                     " 3. Exit \n");
-            selectedOption = scan.nextInt();
+
+            try{
+                String selectedOptionStr = scan.nextLine();
+                selectedOption = Integer.parseInt(selectedOptionStr);
+            }catch (java.lang.NumberFormatException e) {
+                System.out.println("\n Try again \n");
+            }
 
             if (selectedOption != 3) {
                 switch (selectedOption) {
@@ -86,11 +92,17 @@ public class Main {
 
     private static int showCollaboratorOptions() {
         Scanner scan = new Scanner(System.in);
-        System.out.println("\n Options for collaborator : \n" +
-                " 4. Open new account \n" +
-                " 5. Customers information \n" +
-                " 6. Go back \n");
-        return scan.nextInt();
+        try{
+            System.out.println("\n Options for collaborator : \n" +
+                    " 4. Open new account \n" +
+                    " 5. Customers information \n" +
+                    " 6. Go back \n");
+
+            String selectedOptionStr = scan.nextLine();
+            return Integer.parseInt(selectedOptionStr);
+        }catch (java.lang.NumberFormatException e) {
+            return 0;
+        }
     }
 
     private static void triggerActionSelectedByCollaborator(int selectedByCollaborator, Bank bank) {
@@ -152,13 +164,19 @@ public class Main {
 
     private static int showCustomerOptions() {
         Scanner scan = new Scanner(System.in);
-        System.out.println("\n Options for customer : \n" +
-                " 4. Withdraw money \n" +
-                " 5. Deposit money \n" +
-                " 6. Transfer money \n" +
-                " 7. Check my account info \n" +
-                " 8. Go back \n");
-        return scan.nextInt();
+        try{
+            System.out.println("\n Options for customer : \n" +
+                    " 4. Withdraw money \n" +
+                    " 5. Deposit money \n" +
+                    " 6. Transfer money \n" +
+                    " 7. Check my account info \n" +
+                    " 8. Go back \n");
+
+            String selectedOptionStr = scan.nextLine();
+            return Integer.parseInt(selectedOptionStr);
+        }catch (java.lang.NumberFormatException e) {
+            return 0;
+        }
     }
 
     private static void triggerActionSelectedByCustomer(int selectedByCustomer, Bank bank, User user) {
@@ -231,13 +249,15 @@ public class Main {
             System.out.println("Type amount to transfer");
             Double amountToTransfer = scan.nextDouble();
 
-            boolean statusTransfer = false;
             boolean statusDeposit = false;
             for (User customer : bank.getBankCustomers()) {
-                if (accountToTransfer == customer.getSavingsAccount().getAccountNumber()) {
+                if (accountToTransfer == customer.getSavingsAccount().getAccountNumber() && accountToTransfer != user.getSavingsAccount().getAccountNumber()) {
 
-                    statusTransfer = user.getSavingsAccount().transfer(amountToTransfer);
-                    statusDeposit = customer.getSavingsAccount().deposit(amountToTransfer);
+                    boolean statusTransfer = user.getSavingsAccount().transfer(amountToTransfer);
+
+                    if (statusTransfer) {
+                        statusDeposit = customer.getSavingsAccount().deposit(amountToTransfer);
+                    }
 
                     if (statusTransfer && statusDeposit) {
                         return "Successful transfer";
