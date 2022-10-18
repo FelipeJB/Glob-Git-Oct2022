@@ -123,7 +123,12 @@ public class Main {
             Scanner scan = new Scanner(System.in);
             if(scan.hasNextFloat()){
                 amount = scan.nextFloat();
-                valid = true;
+                if(amount>0){
+                    valid = true;
+                }
+                else{
+                    System.out.println("Invalid amount, please try again");
+                }
             }
             else{
                 System.out.println("Invalid amount, please try again");
@@ -141,7 +146,12 @@ public class Main {
             Scanner scan = new Scanner(System.in);
             if(scan.hasNextFloat()){
                 amount = scan.nextFloat();
-                valid = true;
+                if(amount > 0){
+                    valid = true;
+                }
+                else{
+                    System.out.println("Invalid amount, please try again");
+                }
             }
             else{
                 System.out.println("Invalid amount, please try again");
@@ -164,7 +174,14 @@ public class Main {
             Scanner scan = new Scanner(System.in);
             if(scan.hasNextFloat()){
                 amount = scan.nextFloat();
-                valid = true;
+                if(amount>0){
+                    valid = true;
+                }
+                else{
+                    System.out.println("Invalid amount, please try again");
+
+                }
+
             }
             else{
                 System.out.println("Invalid amount, please try again");
