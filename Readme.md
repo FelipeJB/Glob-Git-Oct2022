@@ -30,7 +30,7 @@ tax is $200 plus 15% of the amount to withdraw.</li>
 
 ### PROJECT STRUCTURE
 
-![UML diagram](GlobantBank.png)
+![UML diagram](img/GlobantBank.png)
 
 ### SCOPE
 
