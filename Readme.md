@@ -14,7 +14,7 @@ account.
   - Withdrawals tax is $200 for amounts less than $1000. Withdrawals of more than $1000
   tax is $200 plus 15% of the amount to withdraw.
   - Adding money to the account does not have any cost.
-  - Transfering money to another account tax is $100.
+  - Transferring money to another account tax is $100.
 
 
 ## Table of content
@@ -33,7 +33,7 @@ This project was developed on IntelliJ IDEA 2022.2.3 (Community Edition).
 - ```Bank.java``` contains the class Bank and different methods for different transactions.
 - ```BankAccount.java``` contains the class BankAccount and different methods that affect the bank accounts.
 - ```Client.java``` contains the class Client and the basic information of each client.
-- ```Main.java``` contains the code to start execution of a Java program.
+- ```Main.java``` contains the code to start execution of the Java program.
 
 ## Bugs
 
