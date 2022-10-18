@@ -17,27 +17,49 @@ public class BankAccount {
     public float getBalance() {return this.balance; }
 
     public float depositMoney(float moneyAmount) {
-        balance = this.balance + moneyAmount;
-        return balance;
+        if (moneyAmount <= 0) {
+            System.out.println("Invalid value. Transfer value must be higher than zero.\n");
+            return 0;
+        } else {
+            balance = this.balance + moneyAmount;
+            System.out.println("Your deposit is confirmed!\n");
+            return balance;
+        }
     }
 
     public float withdrawMoney(float moneyAmount) {
+        float tax = 200;
         float taxPlus = (float) ((15.0 / 100) * moneyAmount);
-        float discount = 200 - taxPlus;
-        if (moneyAmount < 1000 && moneyAmount > 0) {
-            balance = this.balance - moneyAmount - 200;
-        } else if (moneyAmount >= 1000 ){
-            balance = this.balance - moneyAmount - discount;
+        float lowerLimit1 = this.balance - moneyAmount - tax;
+        float lowerLimit2 = lowerLimit1 - taxPlus;
+        if (moneyAmount < 1000 && moneyAmount > 0 && lowerLimit1 >= 0) {
+            balance = lowerLimit1;
+            System.out.println("Your withdraw is confirmed!\n");
+            return balance;
+        } else if (moneyAmount >= 1000 && lowerLimit2 >= 0){
+            balance = lowerLimit1 - taxPlus;
+            System.out.println("15% of withdraw amount tax = USD " + taxPlus);
+            System.out.println("Your withdraw is confirmed!\n");
+            return balance;
+        } else if (moneyAmount <= 0){
+            System.out.println("Invalid value. Withdraw value must be higher than zero.\n");
+            return 0;
+        } else {
+            System.out.println("Transfer amount plus tax must be higher than balance account.");
+            return 0;
         }
-        return balance;
-        }
+    }
 
     public float transferMoneyOut(float moneyAmount) {
-        float lowerLimit = this.balance - moneyAmount - 100;
-        if (balance > moneyAmount && lowerLimit >= 0) {
-            balance = this.balance - moneyAmount - 100;
+        float tax = 100;
+        float lowerLimit = this.balance - moneyAmount - tax;
+        if (balance > moneyAmount && lowerLimit >= 0 && moneyAmount != 0) {
+            balance = this.balance - moneyAmount - tax;
             System.out.println("Your transfer is confirmed!\n");
             return balance;
+        } else if (moneyAmount <= 0){
+            System.out.println("Invalid value. Transfer value must be higher than zero.");
+            return 0;
         } else {
             System.out.println("Transfer amount plus tax must be higher than balance account.");
             return 0;

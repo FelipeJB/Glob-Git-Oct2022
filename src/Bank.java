@@ -100,7 +100,6 @@ public class Bank {
         float moneyAmount = myScanner.nextFloat();
         // myScanner = new Scanner(System.in);
         Ana.anaAccount.depositMoney(moneyAmount);
-        System.out.println("Your deposit is confirmed!\n");
         System.out.println("Current Balance: USD " + Ana.anaAccount.getBalance() + ".\n");
     }
 
@@ -118,7 +117,6 @@ public class Bank {
             System.out.println("Current Balance: USD " + Ana.anaAccount.getBalance() + ".\n");
         } else {
             Ana.anaAccount.withdrawMoney(moneyAmountW);
-            System.out.println("Your withdraw is confirmed!\n");
             System.out.println("Current Balance: USD " + Ana.anaAccount.getBalance() + ".\n");
         }
     }
@@ -126,7 +124,7 @@ public class Bank {
     public void userTransfer() {
         Scanner myScanner = new Scanner(System.in);
         System.out.println("Important notice:");
-        System.out.println("Transferring money to another account tax is USD 100.");
+        System.out.println("Transferring money to another account generates a tax of USD 100.");
         System.out.println("Your current balance is USD " + Ana.anaAccount.getBalance() + ".\n");
         System.out.println("Insert transfer amount (USD)");
         float moneyAmountTransfer = myScanner.nextFloat();
