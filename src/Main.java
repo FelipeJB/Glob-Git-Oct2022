@@ -11,9 +11,9 @@ public class Main {
         Scanner myScanner = new Scanner(System.in);
         int bankAuth;
         do {
-            System.out.println("Select your option");
+            System.out.println("Select your profile");
             System.out.println("    1. Administrator");
-            System.out.println("    2. User");
+            System.out.println("    2. Client");
             System.out.println("    3. Exit");
             bankAuth = myScanner.nextInt();
             myScanner = new Scanner(System.in);
@@ -30,7 +30,7 @@ public class Main {
                         int option;
                         do {
                             System.out.println("Select your option");
-                            System.out.println("    1. Current balance");
+                            System.out.println("    1. Check current balance");
                             System.out.println("    2. Deposit");
                             System.out.println("    3. Withdraw");
                             System.out.println("    4. Transfer");
