@@ -15,8 +15,16 @@ public class Account {
 
     public boolean withdrawMoney(double amount){
         boolean successfulTransaction = false;
-        if (balance>=amount){
-            balance = balance - amount;
+        double amountPlusTax;
+        if(amount<1000){
+            amountPlusTax = amount + 200;
+        }else {
+            amountPlusTax = amount + 200 + (amount * 0.15);
+        }
+        System.out.println("This is the amount that will be withdrawn from your account including tax: " + amountPlusTax);
+
+        if (balance>=amountPlusTax){
+            balance = balance - amountPlusTax;
             successfulTransaction = true;
         }
         return successfulTransaction;
@@ -26,6 +34,15 @@ public class Account {
         return balance;
     }
 
+    public boolean TransferMoney(double amount){
+        boolean successfulTransaction = false;
+        double amountPlusTax = amount + 100;
+        if (balance>=amountPlusTax){
+            balance = balance - amountPlusTax;
+            successfulTransaction = true;
+        }
+        return successfulTransaction;
+    }
 
 
     @Override

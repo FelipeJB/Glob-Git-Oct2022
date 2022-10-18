@@ -101,7 +101,7 @@ public class Main {
             System.out.println("*** Please choose an option ***" +
                     "\n1. Make a withdraw" +
                     "\n2. Add money" +
-                    "\n3. Transfer money to another bank account - press 3" +
+                    "\n3. Transfer money to another bank account" +
                     "\n4. Back to previous menu");
             option= sc.nextInt();
 
@@ -109,7 +109,7 @@ public class Main {
                 case 1:
                     System.out.println("Enter the amount you want to withdraw:");
                     double amountToWithdraw = sc.nextDouble();
-                    Boolean successfulTransaction =currentUser.savingAccount.withdrawMoney(amountToWithdraw);
+                    Boolean successfulTransaction = currentUser.savingAccount.withdrawMoney(amountToWithdraw);
                     if(successfulTransaction){
                         System.out.println("Money has been successfully withdrawn from your account"+
                                 "\nYour current balance is: " + currentUser.savingAccount.balance);
@@ -120,12 +120,17 @@ public class Main {
                     }
                     break;
                 case 2:
-                    System.out.println("Enter the amount you want to add:");
+                    System.out.println("--- IMPORTANT: This transaction does not have any cost ---" +
+                            "\nEnter the amount you want to add:");
                     double amount = sc.nextDouble();
                     currentUser.savingAccount.addMoney(amount);
                     System.out.println("The money has been added to your account!!"+
                             "\nYour current balance is: " + currentUser.savingAccount.balance);
                 case 3:
+                    System.out.println("--- IMPORTANT: This transaction has a tax of $100 ---" +
+                            "\nplease validate that the money to be transferred plus the value of the tax " +
+                            "\nis equal to or less than your balance" +
+                            "\nYour current balance is: " + currentUser.savingAccount.balance);
                     System.out.println("Enter the account number to which you want to transfer");
                     int accountNumber = sc.nextInt();
                     User userToTransfer = currentBank.searchAccount(accountNumber);
@@ -134,7 +139,7 @@ public class Main {
                     }else {
                         System.out.println("Enter the amount to transfer:");
                         double amountToTransfer = sc.nextDouble();
-                        Boolean successfulTransfer = currentUser.savingAccount.withdrawMoney(amountToTransfer);
+                        Boolean successfulTransfer = currentUser.savingAccount.TransferMoney(amountToTransfer);
                         if(successfulTransfer){
                             userToTransfer.savingAccount.addMoney(amountToTransfer);
                             System.out.println("successful transfer!!"+
