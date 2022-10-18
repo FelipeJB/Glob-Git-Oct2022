@@ -9,7 +9,7 @@ public class Client {
 
     private final String user;
 
-    private final String password;
+    private String password;
 
     Client(float accountNumber, String name, String user, String password) {
         this.accountNumber = accountNumber;
