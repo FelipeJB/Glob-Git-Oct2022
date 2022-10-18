@@ -12,7 +12,7 @@ public class Main {
         byte internalOptions;
         do {
             System.out.println("Welcome to Bank-App!");
-            System.out.println("Do you have an account?\n 1. Log in\n 2. Create an account\n 0. Exit");
+            System.out.println("Do you have an account?\n 1. Log in\n 2. Create an account\n 3. List of our clients\n 0. Exit");
             action = input.nextByte();
             switch (action) {
                 case 1:
@@ -37,9 +37,10 @@ public class Main {
                                     break;
                                 case 3:
                                     System.out.println("How much money do you want to transfer?");
-                                    double moneyToTransfer = input.nextDouble();
+                                    double amountToTransfer = input.nextDouble();
                                     System.out.println("Enter the account number to whom you want to send the money");
                                     double accountToTransfer = input.nextDouble();
+                                    bank.transferMoney(accountToTransfer, amountToTransfer);
                                     break;
                             }
                         } while (internalOptions != 0);
@@ -50,6 +51,8 @@ public class Main {
                 case 2:
                     bank.clientCreator();
                     break;
+                case 3:
+                    bank.getClientsLists();
             }
         } while(action != 0);
     }

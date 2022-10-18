@@ -40,7 +40,11 @@ public class Bank {
     public void transferMoney(double accountNumber, double amount){
         for (int i = 0; i < clients.size(); i++) {
             if(accountNumber == clients.get(i).getAccountNumber()){
-                double maybe = clients.get(i).getBalance() + amount;
+                clients.get(i).setBalance(client.getBalance() + amount);
+                System.out.println("The transfer has been done successfully.");
+                System.out.println("Your current balance is: " + client.getBalance());
+            } else {
+                System.out.println("The account number is not found in the system.");
             }
         }
     }
@@ -49,7 +53,7 @@ public class Bank {
         for (int i = 0; i < clients.size(); i++) {
             System.out.println("User: " + clients.get(i).getUser());
             System.out.println("Account number: " + clients.get(i).getAccountNumber());
-            System.out.println("Date: " + clients.get(i).getOpeningDate());
+            System.out.println("Opening date: " + clients.get(i).getOpeningDate());
         }
     }
     public void addClientToList(Client client){
@@ -75,6 +79,5 @@ public class Bank {
             client.setOpeningDate(date);
             addClientToList(client);
             System.out.println("Your account has been successfully created!");
-            getClientsLists();
     }
 }
