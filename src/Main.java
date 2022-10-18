@@ -10,6 +10,9 @@ public class Main {
         Client loggedClient ;
         Scanner input = new Scanner(System.in);
 
+        bank.createUser("oscar", "1234");
+//        client = bank.validateUser("oscar", "1234");
+//        System.out.println(client);
 
         int option = 0;
         do{
@@ -65,16 +68,16 @@ public class Main {
                                 break;
                         }
 
-//                        do{
-//                            switch(option){
-//                                case 1:
-//                                    System.out.println("Enter amount to deposit");
-//                                    double amount = input.nextDouble();
-//                                    input = new Scanner(System.in);
-//                                    bank.depositTransaction(1000, loggedClient.savingsAccount);
-//                                    break;
-//                            }
-//                        }while(option !=4);
+                        do{
+                            switch(option){
+                                case 1:
+                                    System.out.println("Enter amount to deposit");
+                                    double amount = input.nextDouble();
+                                    input = new Scanner(System.in);
+                                    bank.depositTransaction(1000, loggedClient.savingsAccount);
+                                    break;
+                            }
+                        }while(option !=4);
 
                     }
                     break;
@@ -86,6 +89,6 @@ public class Main {
                     System.exit(0);
             }
         }while(option != 4);
-
+//
     }
 }
