@@ -22,7 +22,7 @@ public class Account {
     }
 
     public boolean withdraw(Double amountToWithdraw) {
-        if (amountToWithdraw > 0 && accountBalance > 200 && amountToWithdraw <= (accountBalance * 0.76)) {
+        if (amountToWithdraw > 0 && accountBalance > 200 && amountToWithdraw <= accountBalance) {
             if (amountToWithdraw <= 1000 && (accountBalance - (amountToWithdraw + 200)) >= 0) {
                 accountBalance -= (amountToWithdraw + 200);
                 return true;
@@ -44,7 +44,7 @@ public class Account {
     }
 
     public boolean transfer(Double amountToTransfer) {
-        if (amountToTransfer > 0 &&  accountBalance > 100 && amountToTransfer <= accountBalance) {
+        if (amountToTransfer > 0 && accountBalance > 100 && amountToTransfer <= accountBalance) {
             if (accountBalance - (amountToTransfer + 100) >= 0) {
                 accountBalance -= (amountToTransfer + 100);
                 return true;
@@ -55,6 +55,6 @@ public class Account {
 
     @Override
     public String toString() {
-        return "Account N° = " + accountNumber + ", Opening date = " + openingDate + ", accountBalance = " + accountBalance;
+        return "Account N° = " + accountNumber + ", Opening date = " + openingDate + ", Balance = " + accountBalance;
     }
 }

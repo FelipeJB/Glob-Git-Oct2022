@@ -25,7 +25,7 @@ public class Main {
                 String selectedOptionStr = scan.nextLine();
                 selectedOption = Integer.parseInt(selectedOptionStr);
             }catch (java.lang.NumberFormatException e) {
-                System.out.println("\n Try again \n");
+                System.out.println(tryAgainMessage());
             }
 
             if (selectedOption != 3) {
@@ -50,7 +50,7 @@ public class Main {
                                 System.out.println(comingBackMessage());
                             }
                         } else {
-                            System.out.println("\n Try again \n");
+                            System.out.println(tryAgainMessage());
                             System.out.println(comingBackMessage());
                         }
                         break;
@@ -62,6 +62,14 @@ public class Main {
         } while (selectedOption != 3);
     }
 
+    private static String tryAgainMessage() {
+        return "\n ⚠️Try again ⚠️\n";
+    }
+
+    private static String comingBackMessage() {
+        return ">>>>>>>> Coming back to principal menu <<<<<<<<";
+    }
+
     private static void createInitialAccounts(Bank bank) {
         Account newAccount = new Account(new Date(), 1500.0);
         User newUser = new User("lilo", "abc", newAccount);
@@ -69,10 +77,6 @@ public class Main {
         Account newAccount1 = new Account(new Date(), 500.0);
         User newUser1 = new User("mike", "abc", newAccount1);
         bank.addCustomer(newUser1);
-    }
-
-    private static String comingBackMessage() {
-        return ">>>>>>>> Coming back to principal menu <<<<<<<<";
     }
 
     // --------- collaborator section --------- //
@@ -86,7 +90,8 @@ public class Main {
         if (password.equals("globant")) {
             return showCollaboratorOptions();
         }
-        System.out.println("\n Try again \n");
+
+        System.out.println(tryAgainMessage());
         return 0;
     }
 
@@ -198,7 +203,7 @@ public class Main {
             System.out.println(comingBackMessage());
         }
         if (selectedByCustomer == 7) {
-            System.out.println("My account info: \n");
+            System.out.println("My account info is: \n");
             System.out.println(user + "\n");
             System.out.println(comingBackMessage());
         }
