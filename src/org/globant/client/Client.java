@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 public class Client {
     private String user;
     private String password;
-    private double savingsAccount;
+    private double balance;
     private Double accountNumber;
     private LocalDateTime openingDate;
 
@@ -25,12 +25,12 @@ public class Client {
         this.password = password;
     }
 
-    public double getSavingsAccount() {
-        return savingsAccount;
+    public double getBalance() {
+        return balance;
     }
 
-    public void setSavingsAccount(double savingsAccount) {
-        this.savingsAccount = savingsAccount;
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
     public Double getAccountNumber() {
@@ -49,13 +49,24 @@ public class Client {
         this.openingDate = openingDate;
     }
 
-    public Client(String user, String password, double savingsAccount, Double accountNumber, LocalDateTime openingDate) {
+    public Client(String user, String password, double balance, Double accountNumber, LocalDateTime openingDate) {
         this.user = user;
         this.password = password;
-        this.savingsAccount = savingsAccount;
+        this.balance = balance;
         this.accountNumber = accountNumber;
         this.openingDate = openingDate;
     }
     public Client() {
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "user='" + user + '\'' +
+                ", password=" + password +
+                ", balance=" + balance +
+                ", accountNumber=" + accountNumber +
+                ", openingDate=" + openingDate +
+                '}';
     }
 }
