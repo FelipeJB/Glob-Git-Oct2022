@@ -31,5 +31,23 @@ public class Account {
                 '}';
     }
 
+    public int withdraw(int amount){
+        balance -= amount;
+        return amount;
+    }
+
+    public int deposit(int amount){
+        balance += amount;
+        return amount;
+    }
+
+    public int getAccountNumber() {
+        return accountNumber;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
 
 }

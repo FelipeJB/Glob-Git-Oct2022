@@ -20,5 +20,11 @@ public class Bank {
         clients.add(client5);
     }
 
+    public void transferMoney(int clientAccount, int transferAccount, double amount){
+        Account initAccount = null;
+        Account targetAccount = null;
+        for (int i = 0; i < clients.size(); i++){
 
+        }
+    }
 }
