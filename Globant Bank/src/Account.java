@@ -30,19 +30,19 @@ public class Account {
     }
     public void addMoney (double amount){
         balanceAccount = amount + balanceAccount;
-        System.out.println("Deposito exitoso");
-        System.out.println("Este es su nuevo saldo " + " $" + balanceAccount);
+        System.out.println("Successful consignment");
+        System.out.println("This is your new balance " + " $" + balanceAccount);
     }
 
 
     public void withdrawMoney (double amount) {
         if (amount <= balanceAccount) {
             balanceAccount -= amount;
-            System.out.println("Retiro exitoso");
-            System.out.println("Este es su nuevo saldo " + " $" + balanceAccount);
+            System.out.println("Successful withdrawal");
+            System.out.println("This is your new balance " + " $" + balanceAccount);
         }
         else {
-            System.out.println("Su saldo es insuficiente");
+            System.out.println("Your balance is insufficient");
         }
 
     }
