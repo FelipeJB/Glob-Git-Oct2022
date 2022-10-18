@@ -1,13 +1,15 @@
 package src;
-
 import java.util.Scanner;
 
+
+
 public class Main {
+
     public static void main(String[] args) {
         Bank MorganStanley = new Bank("Morgan Stanley");
         System.out.println("Welcome to " + MorganStanley.getName());
         Scanner myScanner = new Scanner(System.in);
-        int bankAuth = 0;
+        int bankAuth;
         do {
             System.out.println("Select your option");
             System.out.println("    1. Administrator");
@@ -15,7 +17,7 @@ public class Main {
             System.out.println("    3. Exit");
             bankAuth = myScanner.nextInt();
             myScanner = new Scanner(System.in);
-            if (bankAuth < 1 || bankAuth > 3) {
+            if (bankAuth < 1 || bankAuth > 3 ) {
                 System.out.println("Invalid option. Insert a number between 1 and 3\n");
             } else if (bankAuth >= 1 && bankAuth <= 3) {
                 switch (bankAuth) {

@@ -2,9 +2,9 @@ package src;
 import java.time.LocalDate;
 
 public class BankAccount {
-    public float accountNumber;
-    public LocalDate openingDate;
-    public float balance;
+    private final float accountNumber;
+    private final LocalDate openingDate;
+    private float balance;
 
     BankAccount(float accountNumber, LocalDate openingDate, float balance) {
         this.accountNumber = accountNumber;
@@ -22,7 +22,6 @@ public class BankAccount {
             return 0;
         } else {
             balance = this.balance + moneyAmount;
-            System.out.println("Your deposit is confirmed!\n");
             return balance;
         }
     }

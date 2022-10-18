@@ -1,15 +1,15 @@
 package src;
 import java.time.LocalDate;
-import java.util.Scanner;
+
 
 public class Client {
 
-    public float accountNumber;
-    public String name;
+    private final float accountNumber;
+    private final String name;
 
-    public String user;
+    private final String user;
 
-    public String password;
+    private final String password;
 
     Client(float accountNumber, String name, String user, String password) {
         this.accountNumber = accountNumber;

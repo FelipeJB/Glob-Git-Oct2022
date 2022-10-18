@@ -18,7 +18,7 @@ public class Bank {
     Client Maria = new Client(456, "Maria Bautista", "Maria", "Isaac");
 
     public void clientInformation(){
-        int optionBank = 0;
+        int optionBank;
         Scanner myScanner = new Scanner(System.in);
         do {
             System.out.println("Select your option");
@@ -100,6 +100,7 @@ public class Bank {
         float moneyAmount = myScanner.nextFloat();
         // myScanner = new Scanner(System.in);
         Ana.anaAccount.depositMoney(moneyAmount);
+        System.out.println("Your deposit is confirmed!\n");
         System.out.println("Current Balance: USD " + Ana.anaAccount.getBalance() + ".\n");
     }
 
@@ -112,7 +113,7 @@ public class Bank {
         System.out.println("Insert withdraw amount (USD)");
         float moneyAmountW = myScanner.nextFloat();
         // myScanner = new Scanner(System.in);
-        if (moneyAmountW > Ana.anaAccount.balance) {
+        if (moneyAmountW > Ana.anaAccount.getBalance()) {
             System.out.println("Withdraw amount cannot be higher than balance account.\n");
             System.out.println("Current Balance: USD " + Ana.anaAccount.getBalance() + ".\n");
         } else {
