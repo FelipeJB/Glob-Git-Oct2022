@@ -1,4 +1,4 @@
-import org.taeacademy.globantbank.business.Bank;
+import org.taeacademy.globantbank.data.Bank;
 import org.taeacademy.globantbank.data.Client;
 
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args){
 
         Bank globantBank = new Bank();
-        globantBank.initializeBank();
+        initializeBank(globantBank);
 
         int option = -1;
         int option2 = -1;
@@ -219,5 +219,15 @@ public class Main {
                 System.out.println(currentClient.getUserName() + "\t\t\t\t" + currentClient.getAccount().getAccountNumber() + "\t\t\t" + currentClient.getAccount().getOpeningDate());
             }
         }
+    }
+
+    public static void initializeBank(Bank bank){
+        ArrayList<Client> clients = bank.getClientList();
+        clients.add(new Client("Jaime Sarmiento", 9000001));
+        clients.add(new Client("Felipe Jimenez", 9000002));
+        clients.add(new Client("Juan Pablo Castiblanco", 9000003));
+        clients.add(new Client("Ana Margarita Garcia", 9000004));
+        clients.add(new Client("Johana Valencia", 9000005));
+        clients.add(new Client("Joan Zorovich", 9000006));
     }
 }

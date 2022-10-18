@@ -1,4 +1,4 @@
-package org.taeacademy.globantbank.business;
+package org.taeacademy.globantbank.data;
 
 import org.taeacademy.globantbank.data.Client;
 import java.util.ArrayList;
@@ -6,15 +6,6 @@ import java.util.ArrayList;
 public class Bank {
 
     ArrayList<Client> clientList = new ArrayList<>();
-
-    public void initializeBank(){
-        this.clientList.add(new Client("Jaime Sarmiento", 9000001));
-        this.clientList.add(new Client("Felipe Jimenez", 9000002));
-        this.clientList.add(new Client("Juan Pablo Castiblanco", 9000003));
-        this.clientList.add(new Client("Ana Margarita Garcia", 9000004));
-        this.clientList.add(new Client("Johana Valencia", 9000005));
-        this.clientList.add(new Client("Joan Zorovich", 9000006));
-    }
 
     public ArrayList<Client> getClientList(){
         return this.clientList;
