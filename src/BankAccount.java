@@ -18,7 +18,7 @@ public class BankAccount {
 
     public float depositMoney(float moneyAmount) {
         balance = this.balance + moneyAmount;
-        return moneyAmount;
+        return balance;
     }
 
     public float withdrawMoney(float moneyAmount) {
@@ -33,14 +33,14 @@ public class BankAccount {
         }
 
     public float transferMoneyOut(float moneyAmount) {
-        if (balance > moneyAmount) {
+        float lowerLimit = this.balance - moneyAmount - 100;
+        if (balance > moneyAmount && lowerLimit >= 0) {
             balance = this.balance - moneyAmount - 100;
-            return 0;
-        } else {
+            System.out.println("Your transfer is confirmed!\n");
             return balance;
+        } else {
+            System.out.println("Transfer amount plus tax must be higher than balance account.");
+            return 0;
         }
     }
 }
-
-
-

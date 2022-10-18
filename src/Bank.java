@@ -123,8 +123,6 @@ public class Bank {
         }
     }
 
-
-
     public void userTransfer() {
         Scanner myScanner = new Scanner(System.in);
         System.out.println("Important notice:");
@@ -133,10 +131,14 @@ public class Bank {
         System.out.println("Insert transfer amount (USD)");
         float moneyAmountTransfer = myScanner.nextFloat();
         // myScanner = new Scanner(System.in);
-        Ana.anaAccount.transferMoneyOut(moneyAmountTransfer);
-        Maria.mariaAccount.depositMoney(moneyAmountTransfer);
-        System.out.println("Your transfer is confirmed!\n");
-        System.out.println("Current Balance: USD " + Ana.anaAccount.getBalance() + ".\n");
+        float transfer = Ana.anaAccount.transferMoneyOut(moneyAmountTransfer);
+        if (transfer != 0) {
+            Maria.mariaAccount.depositMoney(moneyAmountTransfer);
+            System.out.println("Current Balance: USD " + Ana.anaAccount.getBalance() + ".\n");
+        } else {
+            System.out.println("Transfer cannot be completed.\n");
+            System.out.println("Current Balance: USD " + Ana.anaAccount.getBalance() + ".\n");
+        }
     }
 
 
