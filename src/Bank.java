@@ -24,13 +24,14 @@ public class Bank {
         return list;
     }
 
-    public StringBuilder listedAccounts(){
-        StringBuilder list = new StringBuilder();
-        for (Account account : accountsList) {
-            list.append(account);
-        }
-        return list;
-    }
+   public Client searchClient(int id){
+       for (Client client : clientsList) {
+           if(client.account.id == id){
+               return client;
+           }
+       }
+       return null;
+   }
 
     public String transferMoney(Account accountOne, Account accountTwo, float amount){
         if (accountOne.retrieveMoney(amount)){

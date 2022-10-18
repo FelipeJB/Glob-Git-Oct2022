@@ -21,7 +21,7 @@ public class Client {
     @Override
     public String toString() {
         return"Name : " + userName +
-                " Account No.: " + account.id +
+                " Account No. " + account.id +
                 " password: " + "****" + '\n';
     }
 }

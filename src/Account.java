@@ -35,7 +35,7 @@ public class Account {
 
     public String addMoney(float amount){
         this.balance += amount;
-        return "money added successfully \n Your new balance is: " + this.balance ;
+        return "money added successfully \n Your new balance is: $" + this.balance ;
     }
 
     public Boolean retrieveMoney(float amount){
