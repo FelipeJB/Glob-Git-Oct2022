@@ -1,3 +1,5 @@
+package org.globantbank.data;
+
 import java.time.LocalDate;
 
 

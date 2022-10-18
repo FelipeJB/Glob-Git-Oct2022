@@ -1,3 +1,9 @@
+package org.globantbank.mainlogic;
+
+import org.globantbank.data.Bank;
+import org.globantbank.data.BankAccount;
+import org.globantbank.data.Client;
+
 import java.time.LocalDate;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -16,7 +22,7 @@ public class Main {
         int option;
         boolean exit = false;
         while (!exit) {
-            System.out.println("Welcome to JD Bank, what you want to do?");
+            System.out.println("Welcome to JD org.globantbank.data.Bank, what you want to do?");
             System.out.println("   1. List all users information");
             System.out.println("   2. Withdraw money");
             System.out.println("   3. Add money");

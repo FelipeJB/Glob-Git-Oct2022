@@ -1,7 +1,11 @@
+package org.globantbank.data;
+
+import org.globantbank.data.Client;
+
 import java.util.ArrayList;
 
 public class Bank {
-    ArrayList<Client> clients;
+    public ArrayList<Client> clients;
 
     public Bank() {
         this.clients = new ArrayList<>();
