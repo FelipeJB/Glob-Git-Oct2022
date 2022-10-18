@@ -13,6 +13,11 @@ public class Account {
         this.openingDate= LocalDate.now();
     }
 
+    public double addMoney(double amount){
+        balance = balance + amount;
+        return balance;
+    }
+
     @Override
     public String toString() {
         return String.format("%20d|%20s|%20s", accountNumber,openingDate,balance);

@@ -15,6 +15,7 @@ public class User {
         this.password = password;
     }
 
+
     @Override
     public String toString() {
         return String.format("|%20d|%20s|%20s|%20s|", userID, fullName, userName,savingAccount);
