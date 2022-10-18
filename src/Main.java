@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-
     public static void main(String[] args) {
 
         Scanner sc= new Scanner(System.in);
@@ -108,7 +107,17 @@ public class Main {
 
             switch (option){
                 case 1:
-                    System.out.println("Make a sldfj");
+                    System.out.println("Enter the amount you want to withdraw:");
+                    double amountToWithdraw = sc.nextDouble();
+                    Boolean successfulTransaction =currentUser.savingAccount.withdrawMoney(amountToWithdraw);
+                    if(successfulTransaction){
+                        System.out.println("Money has been successfully withdrawn from your account"+
+                                "\nYour current balance is: " + currentUser.savingAccount.balance);
+                    }else {
+                        System.out.println("There is not enough money in your account," +
+                                "\nplease validate your balance and try again"+
+                                "\nYour current balance is: " + currentUser.savingAccount.balance);
+                    }
                     break;
                 case 2:
                     System.out.println("Enter the amount you want to add:");

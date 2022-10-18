@@ -13,10 +13,20 @@ public class Account {
         this.openingDate= LocalDate.now();
     }
 
+    public boolean withdrawMoney(double amount){
+        boolean successfulTransaction = false;
+        if (balance>=amount){
+            balance = balance - amount;
+            successfulTransaction = true;
+        }
+        return successfulTransaction;
+    }
     public double addMoney(double amount){
         balance = balance + amount;
         return balance;
     }
+
+
 
     @Override
     public String toString() {
