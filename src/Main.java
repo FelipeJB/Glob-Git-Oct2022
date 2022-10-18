@@ -108,7 +108,7 @@ public class Main {
             switch (option){
                 case 1:
                     System.out.println("--- IMPORTANT: This transaction has a tax of $200 for amounts less than $1000 ---" +
-                            "\n---Withdrawals of more than $1000 tax is $200 plus 15 of the amount" +
+                            "\n---Withdrawals of more than $1000 tax is $200 plus 15 of the amount " +
                             "\nplease validate that the money to be transferred plus the value of the tax " +
                             "\nis equal to or less than your balance" +
                             "\nYour current balance is: " + currentUser.savingAccount.balance);
