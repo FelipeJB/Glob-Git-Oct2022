@@ -162,7 +162,7 @@ public class Main {
             System.out.println("Your new balance is $" + user.getAccount().getAccountBalance());
         }
         else{
-            System.out.println("Insufficient fuds, transaction declined");
+            System.out.println("Insufficient funds, transaction declined");
         }
     }
 
@@ -195,7 +195,7 @@ public class Main {
             System.out.println("Your new balance is $" + user.getAccount().getAccountBalance());
         }
         else{
-            System.out.println("Insufficient fuds, transaction declined");
+            System.out.println("Insufficient funds, transaction declined");
         }
     }
 

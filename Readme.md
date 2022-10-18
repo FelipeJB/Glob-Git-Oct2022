@@ -38,4 +38,4 @@ Even though the project is developed to follow the given rules, the project is s
 
 The current client class may be too simple and can be improved to provide better access control to the application, the account class can also include more information for future features.
 
-The app does not include an admin profile, for this reason the bank class includes a method to initialize the data base with 6 predefined users, however, clients may be created using the client class constructor if an admin panel is implemented.
+The app does not include an admin profile, for this reason the main class includes a method to initialize the database with 6 predefined users, however, clients may be created using the client class constructor if an admin panel is implemented.
