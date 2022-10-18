@@ -21,20 +21,47 @@ public class Bank {
     }
 
     //TRANSACTIONS
-    public void withdrawTransaction (double amount, Account account){
-        System.out.println(account.withdrawMoney(amount));
+    public String withdrawTransaction (double amount, Account account){
+       return account.withdrawMoney(amount);
     }
 
-    public void depositTransaction(double amount, Account account){
-        System.out.println(account.depositMoney(amount));
+    public String depositTransaction(double amount, Account account){
+        return  account.depositMoney(amount);
     }
 
     public void transferTransaction(double amount, Account sendingAccount, Account receivingAccount){
-        System.out.println(sendingAccount.sendMoney(amount));
         receivingAccount.receiveMoney(amount);
+        System.out.println(sendingAccount.sendMoney(amount));
 
     }
+
+    public Client getUser(String userName){
+        Client clientFound = null;
+        for(int i = 0; i < clientList.size(); i++){
+            Client client = clientList.get(i);
+            if(client.user == userName){
+               clientFound = client;
+               break;
+            }
+        }
+        return clientFound;
+    }
+
+    public Client validateUser(String userName, int password){
+        Client clientFound = null;
+        for(int i = 0; i < clientList.size(); i++){
+            Client client = clientList.get(i);
+            if(client.user == userName && client.password == password){
+                clientFound = client;
+                break;
+            }
+        }
+        return clientFound;
+    }
 }
+
+
+
 
 
 

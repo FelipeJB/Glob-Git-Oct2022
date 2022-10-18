@@ -97,7 +97,6 @@ public class Account {
             return "***** TRANSACTION REJECTED ***** \n"
                     + "  Reason: Insufficient funds";
         }
-
     }
 
     public void receiveMoney(double amount){
