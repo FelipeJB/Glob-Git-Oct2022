@@ -29,4 +29,17 @@ public class Bank {
         }
         return locatedUser;
     }
+
+    public User searchAccount(int accountNumber){
+        User transferUser = null;
+        int counter = 0;
+        while (counter<userList.size() && transferUser == null){
+            User user = this.userList.get(counter);
+            if (user.savingAccount.accountNumber == accountNumber){
+                transferUser = user;
+            }
+            counter ++;
+        }
+        return transferUser;
+    }
 }

@@ -1,4 +1,4 @@
-import GlobantBank.Data.Account;
+
 import GlobantBank.Data.Bank;
 import GlobantBank.Data.User;
 
@@ -34,7 +34,7 @@ public class Main {
                     if (locatedUser == null){
                         System.out.println("User not found!");
                     }else {
-                        clientMenu(locatedUser);
+                        clientMenu(locatedUser, globantBank);
                     }
                     break;
 
@@ -93,7 +93,7 @@ public class Main {
         }while (option != 3);
 
     }
-    public static void clientMenu (User currentUser) {
+    public static void clientMenu (User currentUser, Bank currentBank) {
         Scanner sc= new Scanner(System.in);
         int option;
 
@@ -123,10 +123,28 @@ public class Main {
                     System.out.println("Enter the amount you want to add:");
                     double amount = sc.nextDouble();
                     currentUser.savingAccount.addMoney(amount);
-                    System.out.println(currentUser);
-                    break;
+                    System.out.println("The money has been added to your account!!"+
+                            "\nYour current balance is: " + currentUser.savingAccount.balance);
                 case 3:
-                    System.out.println("Transfer money");
+                    System.out.println("Enter the account number to which you want to transfer");
+                    int accountNumber = sc.nextInt();
+                    User userToTransfer = currentBank.searchAccount(accountNumber);
+                    if (userToTransfer == null){
+                        System.out.println("Account not found!!, please validate the account number");
+                    }else {
+                        System.out.println("Enter the amount to transfer:");
+                        double amountToTransfer = sc.nextDouble();
+                        Boolean successfulTransfer = currentUser.savingAccount.withdrawMoney(amountToTransfer);
+                        if(successfulTransfer){
+                            userToTransfer.savingAccount.addMoney(amountToTransfer);
+                            System.out.println("successful transfer!!"+
+                                    "\nYour current balance is: " + currentUser.savingAccount.balance);
+                        }else {
+                            System.out.println("There is not enough money in your account," +
+                                    "\nplease validate your balance and try again"+
+                                    "\nYour current balance is: " + currentUser.savingAccount.balance);
+                        }
+                    }
                     break;
                 case 4:
                     System.out.println("This is the previous !");
