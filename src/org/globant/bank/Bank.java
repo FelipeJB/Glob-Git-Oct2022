@@ -12,9 +12,12 @@ public class Bank {
         clientList = new ArrayList<>();
     }
 
-    public void addUserToBank(Client user){
-        clientList.add(user);
-    }
+   public String createUser(String userName, String password){
+        Client client = new Client( userName, password);
+        clientList.add(client);
+                return "\n Customer " +userName + " successfully created\n";
+   }
+
     public String getAllClients(){
         return "***** " + name + " CLIENT LIST ***** \n"
                 + clientList;
@@ -47,11 +50,11 @@ public class Bank {
         return clientFound;
     }
 
-    public Client validateUser(String userName, int password){
+    public Client validateUser(String userName, String password){
         Client clientFound = null;
         for(int i = 0; i < clientList.size(); i++){
             Client client = clientList.get(i);
-            if(client.user == userName && client.password == password){
+            if(client.user.equals(userName) && client.password.equals(password)){
                 clientFound = client;
                 break;
             }

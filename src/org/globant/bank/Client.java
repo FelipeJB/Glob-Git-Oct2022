@@ -3,11 +3,11 @@ package org.globant.bank;
 public class Client {
     public Account savingsAccount;
     final String user;
-    final int password;
+    final String password;
 
 
     //cada vez que se crea un cliente se crea un account
-    public  Client(String user, int password){
+    public  Client(String user, String password){
         this.user = user;
         this.password = password;
         this.savingsAccount = new Account();
