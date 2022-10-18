@@ -1,3 +1,5 @@
+package model;
+
 import java.util.Date;
 
 public class Account {
@@ -13,29 +15,29 @@ public class Account {
         this.balance = balance;
     }
 
-    public StringBuilder withdraw(float amount){
+    public String withdraw(float amount){
+        if(amount == 0){
+            return "The amount can not be 0";
+        }
         float tax = 200;
         if (amount>1000){
-            tax += amount * 15 / 100;
+            tax += (amount * 15 / 100);
         }
 
         float totalCost = amount + tax;
-        if (totalCost < this.balance){
-            return null;
+        if (totalCost > this.balance){
+            return "You do not have enough money";
         }
         this.balance -= totalCost;
 
-        StringBuilder receipt = new StringBuilder();
-        receipt.append("tax applied: ").append(tax).append("\n");
-        receipt.append("withdrawn value: ").append(amount).append("\n");
-        receipt.append("New balance account: ").append(this.balance).append("\n");
-
-        return receipt;
+        return "Tax applied: " + tax + "\n" +
+                "Withdrawn value: " + amount + "\n" +
+                "New balance account: " + this.balance + "\n";
     }
 
     public String addMoney(float amount){
         this.balance += amount;
-        return "money added successfully \n Your new balance is: $" + this.balance ;
+        return "money added successfully \nYour new balance is: $" + this.balance ;
     }
 
     public Boolean retrieveMoney(float amount){

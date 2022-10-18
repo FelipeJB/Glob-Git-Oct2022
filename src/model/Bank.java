@@ -1,4 +1,4 @@
-import org.jetbrains.annotations.NotNull;
+package model;
 
 import java.util.ArrayList;
 
@@ -34,7 +34,8 @@ public class Bank {
    }
 
     public String transferMoney(Account accountOne, Account accountTwo, float amount){
-        if (accountOne.retrieveMoney(amount)){
+        float tax = 100;
+        if (accountOne.retrieveMoney(amount + tax)){
             accountTwo.addMoney(amount);
             return "transaction is successful";
         }else {

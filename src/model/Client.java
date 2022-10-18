@@ -1,3 +1,5 @@
+package model;
+
 import java.time.Instant;
 import java.util.Date;
 import java.util.Objects;
@@ -15,7 +17,8 @@ public class Client {
     }
 
     public boolean validateLogin(String user, String password){
-        return Objects.equals(this.userName, user) && Objects.equals(this.password, password);
+        user = user.toLowerCase();
+        return Objects.equals(this.userName.toLowerCase(), user) && Objects.equals(this.password, password);
     }
 
     @Override

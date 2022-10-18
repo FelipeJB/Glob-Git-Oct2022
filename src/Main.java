@@ -1,3 +1,7 @@
+import model.Account;
+import model.Bank;
+import model.Client;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -21,15 +25,15 @@ public class Main {
 
             switch (option) {
                 case 1:
-                    System.out.println("Enter the id");
+                    System.out.println("Enter the account id");
                     int checkAccountId = input.nextInt();
                     input = new Scanner(System.in);
 
-                    System.out.println("Enter the name");
+                    System.out.println("Enter your name");
                     String checkUserName = input.nextLine();
                     input = new Scanner(System.in);
 
-                    System.out.println("Enter the password");
+                    System.out.println("Enter your password");
                     String checkPassword = input.nextLine();
                     input = new Scanner(System.in);
 
@@ -42,7 +46,8 @@ public class Main {
 
                     boolean runSubMenu = true;
                     while (runSubMenu){
-                        System.out.println("Select an option!" +
+                        System.out.println("\n" + chosenClient.userName +
+                                " Select an option!" +
                                 "\n 1. Withdraw" +
                                 "\n 2. Add money" +
                                 "\n 3. Transfer" +
@@ -54,7 +59,7 @@ public class Main {
                         float amount = 0;
                         switch (subMenuOption){
                             case 1:
-                                System.out.println("Enter the amount to add");
+                                System.out.println("Enter the amount to withdraw");
                                 amount = input.nextFloat();
                                 input = new Scanner(System.in);
 
@@ -68,17 +73,25 @@ public class Main {
                                 System.out.println( chosenClient.account.addMoney(amount) );
                                 break;
                             case 3:
-                                System.out.println("Enter the account id");
+                                System.out.println("Enter the id of the account ");
                                 int idToTransfer = input.nextInt();
                                 input = new Scanner(System.in);
+
+                                if(idToTransfer == chosenClient.account.id){
+                                    System.out.println("You can not select your own account to transfers");
+                                    break;
+                                }
 
                                 System.out.println("Enter the amount to transfer");
                                 amount = input.nextFloat();
                                 input = new Scanner(System.in);
 
                                 Account secondAccount = bank.searchClient( idToTransfer ).account;
-
-                                System.out.println( bank.transferMoney(chosenClient.account, secondAccount, amount) );
+                                if(secondAccount != null){
+                                    System.out.println( bank.transferMoney(chosenClient.account, secondAccount, amount) );
+                                }else {
+                                    System.out.println("The chosen account does not exist.");
+                                }
                                 break;
                             case 4:
                                 System.out.println( chosenClient.account.toString() );
