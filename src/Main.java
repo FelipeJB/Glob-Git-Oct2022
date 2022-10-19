@@ -6,15 +6,6 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         System.out.println("Welcome to Globant Bank");
-        List<Client> list = new ArrayList<>();
-        list.add(new Client(1000, 0,"2022/12/05" ,"Jon Snow","kinginthenorth"));
-        list.add(new Client(2000, 5000, "2021/02/25","Carlos Valderrama", "elpibeckrack"));
-        list.add(new Client(3000, 3500, "2022/09/17", "Kendall Jenner","iamcutexoxo"));
-        list.add(new Client(4000, 500, "2022/06/14", "Alex Ferguson","champion4ever"));
-        list.add(new Client(5000, 7500, "2022/03/14", "Alisha Lehmann","hammberbritish32"));
-        list.add(new Client(6000, 500, "2022/11/15", "Sidney Shaw","moneyrulz$$21"));
-        list.add(new Client(7000, 2500, "2022/3/1", "James Rodriguez","nosejugarfutbol39"));
-
 
         Scanner scan = new Scanner(System.in);
         int option;
@@ -62,7 +53,7 @@ public class Main {
                                     case 1:
                                         System.out.println("Add your money: ");
                                         int amount = scan.nextInt();
-                                        client.addMoney(amount);
+                                        Account.addMoney(amount);
                                         System.out.println("Your new balance status is: $" + client.getBalance());
                                         break;
                                     case 2:

@@ -1,62 +1,29 @@
-public class Client extends Account{
+import java.time.LocalDate;
+
+public class Client{
 
     //variables nativas
+    public int clientId;
     public String name;
     public String password;
-    float initialAccount;
+    public Account savingAccount;
 
     //constructores
-    public Client(int numberAccount, float balance, String opening, String name, String password) {
-        super(numberAccount, balance, opening);
+    public Client(int clientId, String name, String password) {
+        this.clientId = clientId ;
         this.name = name;
         this.password = password;
+        this.savingAccount = new Account();
     }
 
-    //metodos
-
-    public float addMoney(float money){
-        balance = initialAccount += money;
-        return balance;
-    }
-
-    public float withdrawMoney(float money){
-        if(balance > money){
-            balance = initialAccount -= money;
-        } else if (money < 1000) {
-            balance = initialAccount -= money + 200;
-        } else if (money > 1000) {
-            balance = initialAccount -= money * 15/100 + 200;
-        } else if (balance < money) {
-            System.out.println("There aren't enough funds");
-        }
-        return balance;
-    }
+    //Metodos
     public String getName() {
         return name;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getPassword() {
         return password;
     }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public int getNumberAccount(){
-        return numberAccount;
-    }
-
-    public float getBalance(){
-        return balance;
-    }
-
-    public String getDate(){
-        return opening;
-    }
-
+    public int getNumberAccount(){ return savingAccount.numberAccount; }
+    public double getBalance(){ return savingAccount.balance; }
+    public LocalDate getDate(){ return savingAccount.opening; }
 }
