@@ -11,9 +11,12 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Client> users = new ArrayList<>();
+        BusinessLogic.openingMessage();
+        int clientNumber = BusinessLogic.choosingUser();
+        BusinessLogic.accountOperations(clientNumber);
 
-        Client ChristianMartinez = new Client();
+        /**ArrayList<Client> users = new ArrayList<>();
+         Client ChristianMartinez = new Client();
         users.add(ChristianMartinez);
 
         ChristianMartinez.setUserName("Christian Martinez");
@@ -34,8 +37,6 @@ public class Main {
         System.out.println(ChristianMartinez.getAccountBalance());
         ChristianMartinez.withdrawMoney(5f);
         System.out.println(ChristianMartinez.getAccountBalance());
-
-        //Adding another client
-
+         */
     }
 }

@@ -1,56 +1,36 @@
+import java.util.Random;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Bank -> Client -> Account
- * ----------
- * Class:
- * Methods:
- */
-
-public class Client {
-    private String userName;
-    private String password;
+public class Account {
     private long accountNumber;
     private String accountOpeningDate;
     private float accountBalance;
 
-    // Getters and setters
-    // THINK ABOUT HOW TO IMPLEMENT SECURITY
-    public String getUserName() {
-        return this.userName;
-    }
 
-    public void setUserName(String newUserName) {
-        this.userName = newUserName;
-    }
-
-    public String getPassword() {
-        return this.password;
-    }
-
-    public void setPassword(String newPassword) {
-        this.password = newPassword;
-    }
-
+    // Getters
     public long getAccountNumber(){
         return this.accountNumber;
-    }
-
-    public void setAccountNumber(long newAccountNumber){
-        this.accountNumber = newAccountNumber;
     }
 
     public String getAccountOpeningDate(){
         return this.accountOpeningDate;
     }
 
-    public void setAccountOpeningDate(){
-        this.accountOpeningDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
-    }
-
     public float getAccountBalance(){
         return this.accountBalance;
+    }
+
+
+    // Setters
+    public void setAccountNumber(long newAccountNumber){
+        // Generating a random Account number
+        this.accountNumber = 10000000 + new Random().nextInt(90000000); // TEST THIS
+    }
+
+    public void setAccountOpeningDate(){
+        // Setting up the creating date as a string
+        this.accountOpeningDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
     }
 
     public void setAccountBalance(float newAccountBalance){
@@ -101,5 +81,3 @@ public class Client {
         }
     }
 }
-
-
