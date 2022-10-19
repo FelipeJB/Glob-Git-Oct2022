@@ -1,5 +1,4 @@
 package org.globant.bank;
-
 import java.util.Date;
 
 public class Account {
@@ -60,12 +59,10 @@ public class Account {
                              + "  TOTAL      $" + totalAmount + "\n"
                              + "  ------ \n"
                              + "  Balance    $" + balance + "\n";
-            } else {
-                     return "***** TRANSACTION REJECTED ***** \n"
-                             + "  Reason: Insufficient funds";
             }
         }
-        return "Invalid number, please enter a positive number";
+        return "***** TRANSACTION REJECTED ***** \n"
+                + "  Reason: Insufficient funds";
     }
 
     public String depositMoney(double amount){
@@ -101,11 +98,7 @@ public class Account {
 
     public void receiveMoney(double amount){
         balance = balance + amount;
-        //return "Successful transfer";
     }
-
-    //public void searchAccount(){}
-
 }
 
 

@@ -1,7 +1,5 @@
 package org.globant.bank;
-
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 public class Bank {

@@ -5,8 +5,6 @@ public class Client {
     final String user;
     final String password;
 
-
-    //cada vez que se crea un cliente se crea un account
     public  Client(String user, String password){
         this.user = user;
         this.password = password;

@@ -1,4 +1,3 @@
-import org.globant.bank.Account;
 import org.globant.bank.Bank;
 import org.globant.bank.Client;
 
@@ -10,11 +9,7 @@ public class Main {
         Client loggedClient ;
         Scanner input = new Scanner(System.in);
 
-        //bank.createUser("oscar", "1234");
-        //client = bank.validateUser("oscar", "1234");
-        //System.out.println(client);
-
-        int option = 0;
+        int option;
 
         do{
             System.out.println("***** WELCOME TO GLOBANT BANK ***** \n"
@@ -100,6 +95,7 @@ public class Main {
                                 case 5:
                                     break;
                                 case 6:
+                                    System.out.println("Thank you for using the services of globant bank.");
                                     System.exit(0);
                             }
                         }while(option !=6);
@@ -113,6 +109,5 @@ public class Main {
                     System.exit(0);
             }
         }while(option != 4);
-//
     }
 }
