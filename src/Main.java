@@ -10,11 +10,12 @@ public class Main {
         Client loggedClient ;
         Scanner input = new Scanner(System.in);
 
-        bank.createUser("oscar", "1234");
-//        client = bank.validateUser("oscar", "1234");
-//        System.out.println(client);
+        //bank.createUser("oscar", "1234");
+        //client = bank.validateUser("oscar", "1234");
+        //System.out.println(client);
 
         int option = 0;
+
         do{
             System.out.println("***** WELCOME TO GLOBANT BANK ***** \n"
                     + "  1. Sign in \n"
@@ -35,8 +36,8 @@ public class Main {
                     System.out.println("  > Create user password");
                     String password = input.nextLine();
                     input = new Scanner(System.in);
-
-                    System.out.println(bank.createUser(userName, password));
+                    bank.createUser(userName, password);
+                    System.out.println("USUARIO CREADO");
                     break;
 
                 case 2:
@@ -51,34 +52,57 @@ public class Main {
 
                     loggedClient = bank.validateUser(userName, password);
 
-                    if(loggedClient != null){
+                    if(loggedClient == null){
                         System.out.println("User not found\n");
                     } else {
-                        System.out.println("\nWelcome " + userName + " to Globant Bank\n\n\n" +
-                                "  1. Deposit money\n" +
-                                "  2. Withdraw money\n" +
-                                "  3. Transfer money\n" +
-                                "  4. Exit \n");
-                        option = input.nextInt();
-                        input = new Scanner(System.in);
-
-                        switch(option){
-                            case 1:
-                                System.out.println(loggedClient);
-                                break;
-                        }
-
                         do{
+                            System.out.println("\n *** WELCOME TO YOUR ACCOUNT ***\n" +
+                                                   "  > " + userName + ", what do you want to do?\n\n" +
+                                    "  1. Deposit money\n" +
+                                    "  2. Withdraw money\n" +
+                                    "  3. Transfer money\n" +
+                                    "  4. Balance\n" +
+                                    "  5. Back to menu\n" +
+                                    "  6. Exit");
+
+                            option = input.nextInt();
+                            input = new Scanner(System.in);
+
                             switch(option){
                                 case 1:
-                                    System.out.println("Enter amount to deposit");
-                                    double amount = input.nextDouble();
+                                    System.out.println("******* DEPOSIT MONEY ******* \n" +
+                                            " > Enter amount to deposit");
+                                    double amountToDeposit = input.nextDouble();
                                     input = new Scanner(System.in);
-                                    bank.depositTransaction(1000, loggedClient.savingsAccount);
+                                    System.out.println(bank.depositTransaction(amountToDeposit, loggedClient.savingsAccount) + "\n");
                                     break;
+                                case 2:
+                                    System.out.println("******* WITHDRAW MONEY ******* \n" +
+                                            "\n > Enter amount to withdrawn");
+                                    int amountToWithdrawn = input.nextInt();
+                                    input = new Scanner(System.in);
+                                    System.out.println(bank.withdrawTransaction(amountToWithdrawn, loggedClient.savingsAccount));
+                                    break;
+                                case 3:
+                                    System.out.println("******* TRANSFER MONEY ******* \n" +
+                                            " \n> Enter amount to be transferred");
+                                    int amountToTransfer = input.nextInt();
+                                    input = new Scanner(System.in);
+                                    System.out.println("***** TRANSFER MONEY ***** \n" +
+                                            "  > Enter the account number  ");
+                                    int accountNumber = input.nextInt();
+                                    input = new Scanner(System.in);
+                                    System.out.println(bank.transferTransaction(amountToTransfer, loggedClient.savingsAccount, accountNumber));
+                                    break;
+                                case 4:
+                                    System.out.println(bank.getBalanceAccount(loggedClient.savingsAccount));
+                                    break;
+                                case 5:
+                                    break;
+                                case 6:
+                                    System.exit(0);
                             }
-                        }while(option !=4);
-
+                        }while(option !=6);
                     }
                     break;
                 case 3:

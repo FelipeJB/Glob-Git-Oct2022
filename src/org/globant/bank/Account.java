@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Account {
 
-    private final int accountNumber;
+    public final int accountNumber;
     static int serialNumberAccount = 100;
     static public String accountType = "Savings Account";
     private final Date openingDate;
@@ -29,7 +29,7 @@ public class Account {
 
     public String getBalance(){
         return "******    BALANCE    ****** \n"
-                + "  Your Balance  $" + balance + "\n";
+                + "  Your Balance is $" + balance + "\n";
     }
 
     public String withdrawMoney(double amount){

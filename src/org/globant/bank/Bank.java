@@ -1,6 +1,7 @@
 package org.globant.bank;
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class Bank {
@@ -32,22 +33,29 @@ public class Bank {
         return  account.depositMoney(amount);
     }
 
-    public void transferTransaction(double amount, Account sendingAccount, Account receivingAccount){
-        receivingAccount.receiveMoney(amount);
-        System.out.println(sendingAccount.sendMoney(amount));
+    public String transferTransaction(double amount, Account sendingAccount, int accountNumber){
+        Client receivingClient;
 
+        for(int i = 0; i < clientList.size(); i++){
+            if(clientList.get(i).savingsAccount.accountNumber == (accountNumber)) {
+                receivingClient = clientList.get(i);
+                receivingClient.savingsAccount.receiveMoney(amount);
+                return sendingAccount.sendMoney(amount);
+            }
+        }
+        return "THE ACCOUNT " + accountNumber + " not exist\n";
     }
 
-    public Client getUser(String userName){
-        Client clientFound = null;
+    public Client getUser(double accountNumber){
+        Client accountFound = null;
         for(int i = 0; i < clientList.size(); i++){
             Client client = clientList.get(i);
-            if(client.user == userName){
-               clientFound = client;
+            if(client.savingsAccount.equals(accountNumber)){
+               accountFound = client;
                break;
             }
         }
-        return clientFound;
+        return accountFound;
     }
 
     public Client validateUser(String userName, String password){
@@ -56,10 +64,13 @@ public class Bank {
             Client client = clientList.get(i);
             if(client.user.equals(userName) && client.password.equals(password)){
                 clientFound = client;
-                break;
             }
         }
         return clientFound;
+    }
+
+    public String getBalanceAccount(Account accountToCheckBalance){
+        return  accountToCheckBalance.getBalance() +"\n" ;
     }
 }
 
