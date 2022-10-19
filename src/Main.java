@@ -36,6 +36,7 @@ public class Main {
                     break;
 
                 case 2:
+
                     System.out.println("*****  LOGIN  ***** \n" +
                             "  > Write your user name");
                     userName = input.nextLine();
@@ -50,6 +51,7 @@ public class Main {
                     if(loggedClient == null){
                         System.out.println("User not found\n");
                     } else {
+                        boolean back = false;
                         do{
                             System.out.println("\n *** WELCOME TO YOUR ACCOUNT ***\n" +
                                                    "  > " + userName + ", what do you want to do?\n\n" +
@@ -93,12 +95,16 @@ public class Main {
                                     System.out.println(bank.getBalanceAccount(loggedClient.savingsAccount));
                                     break;
                                 case 5:
+
+                                    back = true;
+                                    //log off
+                                    //loggedClient = null;
+                                    //Main menu
                                     break;
                                 case 6:
                                     System.out.println("Thank you for using the services of globant bank.");
-                                    System.exit(0);
                             }
-                        }while(option !=6);
+                        }while(option !=6 || back == true);
                     }
                     break;
                 case 3:
