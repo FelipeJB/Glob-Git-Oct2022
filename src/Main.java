@@ -1,13 +1,13 @@
 package src;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
-
-
 
 public class Main {
 
     public static void main(String[] args) {
-        Bank GlobantBank = new Bank("Globant Bank");
-        System.out.println("Welcome to " + GlobantBank.getName());
+        Bank globantBank = new Bank("Globant Bank");
+        System.out.println("Welcome to " + globantBank.getName());
         Scanner myScanner = new Scanner(System.in);
         int bankAuth;
         do {
@@ -22,11 +22,11 @@ public class Main {
             } else if (bankAuth >= 1 && bankAuth <= 3) {
                 switch (bankAuth) {
                     case 1:
-                        GlobantBank.bankUserLogin();
-                        GlobantBank.clientInformation();
+                        globantBank.bankUserLogin();
+                        globantBank.clientInformation();
                         break;
                     case 2:
-                        GlobantBank.clientUserLogin();
+                        globantBank.clientUserLogin();
                         int option;
                         do {
                             System.out.println("Select your option");
@@ -42,16 +42,16 @@ public class Main {
                             } else if (option >= 1 && option <= 5) {
                                 switch (option) {
                                     case 1:
-                                        System.out.println("Your current balance is USD " + GlobantBank.Ana.anaAccount.getBalance() + ".\n");
+                                        System.out.println("Your current balance is USD " + globantBank.Ana.anaAccount.getBalance() + ".\n");
                                         break;
                                     case 2:
-                                        GlobantBank.userDeposit();
+                                        globantBank.userDeposit();
                                         break;
                                     case 3:
-                                        GlobantBank.userWithdraw();
+                                        globantBank.userWithdraw();
                                         break;
                                     case 4:
-                                        GlobantBank.userTransfer();
+                                        globantBank.userTransfer();
                                         break;
                                     case 5:
                                         System.out.println("Have a great day!\n");

@@ -18,6 +18,11 @@ public class BankAccount {
     public LocalDate getOpeningDate() { return this.openingDate; }
     public float getBalance() {return this.balance; }
 
+    public static List<BankAccount> allAccounts = new ArrayList<>();
+
+    public static List<BankAccount> getAllAccounts() {
+        return allAccounts;
+    }
 
 
 

@@ -28,5 +28,12 @@ public class Client {
     BankAccount anaAccount = new BankAccount(123, LocalDate.parse("2009-05-30"), 300  );
     BankAccount mariaAccount = new BankAccount(456, LocalDate.parse("2009-09-21"), 500  );
 
+    public static List<Client> allClients = new ArrayList<>();
+
+    public static List<Client> getAllClients() {
+        return allClients;
+    }
+
+
 }
 

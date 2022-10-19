@@ -1,9 +1,12 @@
 package src;
 
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import static src.BankAccount.allAccounts;
 
 public class Bank {
 
@@ -15,20 +18,20 @@ public class Bank {
 
     public String getName() { return this.name; }
 
+    public static List<Client> allClients = new ArrayList<>();
+    public static List<Client> getAllClients() { return allClients; }
+
+    public static List<BankAccount> allBankAccounts = new ArrayList<>();
+    public static List<BankAccount> getAllBankAccounts() { return allBankAccounts; }
+
+
     Administrator BankAdmin = new Administrator("Globant Bank", "admin", "Bank");
     Client Ana = new Client(123, "Ana Buvinghausen", "Ana", "Ken");
     Client Maria = new Client(456, "Maria Bautista", "Maria", "Isaac");
 
 
-
-    //public static List<Client> allClients = new ArrayList<>();
-
-    // public static List<Client> getAllClients(){
-    //    return allClients;
-    // }
-
     // allAccounts.add(Ana.anaAccount);
-    //allClients.add(Ana);
+
 
     public void clientInformation(){
         int optionBank;
@@ -45,16 +48,23 @@ public class Bank {
                 switch (optionBank) {
                     case 1:
                         System.out.println("List of clients:\n");
-                        String anaUser = Ana.getName();
-                        float anaAccountNumber = Ana.anaAccount.getAccountNumber();
-                        LocalDate anaOpeningDate = Ana.anaAccount.getOpeningDate();
-                        float anaBalance = Ana.anaAccount.getBalance();
-                        System.out.println("Client name: " + anaUser + " |" + " Account number: " + anaAccountNumber + " |" + " Opening date: "+ anaOpeningDate + " |" + " Balance: USD" + anaBalance + ".\n");
-                        String mariaUser = Maria.getName();
-                        float mariaAccountNumber = Maria.mariaAccount.getAccountNumber();
-                        LocalDate mariaOpeningDate = Maria.mariaAccount.getOpeningDate();
-                        float mariaBalance = Maria.mariaAccount.getBalance();
-                        System.out.println("Client name: " + mariaUser + " | " + " Account number: " + mariaAccountNumber + " |" + " Opening date: " + mariaOpeningDate + " |" + " Balance: USD" + mariaBalance + ".\n");
+                        allClients.add(Ana);
+                        allClients.add(Maria);
+                        allBankAccounts.add(Ana.anaAccount);
+                        allBankAccounts.add(Maria.mariaAccount);
+                        List<Client> clients = getAllClients();
+                        List<BankAccount> bankAccounts = getAllBankAccounts();
+                        System.out.println("User \t Account Number \t Opening Date \t Balance (USD)");
+                        for (int i= 0; i < clients.size(); i++){
+                            Client currentClient = clients.get(i);
+                            BankAccount currentBankAccount = bankAccounts.get(i);
+                            System.out.print(currentClient.getUser() + "\t");
+                            System.out.print("\t\t" + currentClient.getAccountNumber() + "\t");
+                            System.out.print("\t\t" + currentBankAccount.getOpeningDate() + "\t");
+                            System.out.print("\t\t" + currentBankAccount.getBalance() + "\n");
+                        }
+                        System.out.println(" ");
+                        System.out.println("End of list of users\n");
                         break;
                     case 2:
                         System.out.println("Have a great day!\n");
