@@ -13,7 +13,7 @@ public class Bank {
 
     public String getName() { return this.name; }
 
-    Client BankMs = new Client(111, "Morgan Stanley", "admin", "Bank");
+    Administrator BankAdmin = new Administrator("Globant Bank", "admin", "Bank");
     Client Ana = new Client(123, "Ana Gonzalez", "Ana", "Ken");
     Client Maria = new Client(456, "Maria Bautista", "Maria", "Isaac");
 
@@ -61,9 +61,9 @@ public class Bank {
             System.out.println("Enter password");
             String tempPassword = myScanner.nextLine();
             myScanner = new Scanner(System.in);
-            if (tempUser.equals(BankMs.getUser()) && tempPassword.equals(BankMs.getPassword())) {
+            if (tempUser.equals(BankAdmin.getUser()) && tempPassword.equals(BankAdmin.getPassword())) {
                 System.out.println("Authentication Successful.\n");
-                System.out.println("Welcome " + BankMs.getUser() + ".\n");
+                System.out.println("Welcome " + BankAdmin.getName() + ".\n");
                 authenticationBank = 1;
             } else {
                 System.out.println(("User name / Password not matching. Try again.\n"));

@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Bank MorganStanley = new Bank("Morgan Stanley");
-        System.out.println("Welcome to " + MorganStanley.getName());
+        Bank GlobantBank = new Bank("Globant Bank");
+        System.out.println("Welcome to " + GlobantBank.getName());
         Scanner myScanner = new Scanner(System.in);
         int bankAuth;
         do {
@@ -22,11 +22,11 @@ public class Main {
             } else if (bankAuth >= 1 && bankAuth <= 3) {
                 switch (bankAuth) {
                     case 1:
-                        MorganStanley.bankUserLogin();
-                        MorganStanley.clientInformation();
+                        GlobantBank.bankUserLogin();
+                        GlobantBank.clientInformation();
                         break;
                     case 2:
-                        MorganStanley.clientUserLogin();
+                        GlobantBank.clientUserLogin();
                         int option;
                         do {
                             System.out.println("Select your option");
@@ -42,16 +42,16 @@ public class Main {
                             } else if (option >= 1 && option <= 5) {
                                 switch (option) {
                                     case 1:
-                                        System.out.println("Your current balance is USD " + MorganStanley.Ana.anaAccount.getBalance() + ".\n");
+                                        System.out.println("Your current balance is USD " + GlobantBank.Ana.anaAccount.getBalance() + ".\n");
                                         break;
                                     case 2:
-                                        MorganStanley.userDeposit();
+                                        GlobantBank.userDeposit();
                                         break;
                                     case 3:
-                                        MorganStanley.userWithdraw();
+                                        GlobantBank.userWithdraw();
                                         break;
                                     case 4:
-                                        MorganStanley.userTransfer();
+                                        GlobantBank.userTransfer();
                                         break;
                                     case 5:
                                         System.out.println("Have a great day!\n");
