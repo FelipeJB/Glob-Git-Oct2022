@@ -1,5 +1,4 @@
-gitIgnore
-.idea
+BankExcercise/.idea
 out/
 *.iml
 # Compiled class file
