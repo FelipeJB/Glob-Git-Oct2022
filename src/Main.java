@@ -1,6 +1,9 @@
 package src;
 
 
+import src.globant.bank.Bank;
+import src.globant.client.Client;
+
 import java.util.Scanner;
 
 // El algoritmo inicia creando un scanner, pide datos e imprime por pantalla, lee el nombre de usuario yu lo pone en name
@@ -11,42 +14,64 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scan = new Scanner(System.in);
+        Bank bank = new Bank();
+        Client client = new Client();
+        System.out.println("Welcome, Do you have an account?");
+               byte options;
+               byte otherOptions;
 
-        System.out.println("Escriba el nombre del usuario");
-        String name = scan.nextLine();
-        System.out.println("Escriba la contraseña ");
-        String password  = scan.nextLine();
-        System.out.println("Escriba el saldo incial de la cuenta");
-        double balance = scan.nextDouble();
+      do {
+          System.out.println("option 1 : log in");
+          System.out.println("option 2 : creating an account");
+          System.out.println("option 3 : List clients");
+          System.out.println(" option 0 : Exit");
+          options = scan.nextByte();
+          if (options == 1) {
+              System.out.println("Please typer your username");
+              String user = scan.next();
+              System.out.println(" Please enter your password");
+              String password = scan.next();
+              if (bank.validator(user, password)) {
+                  do {
+                      System.out.println(" Welcome to your account");
+                      System.out.println(" What are we gonna do today?");
+                      System.out.println( " option 1 : Withdraw money");
+                      System.out.println( " option 2 : deposit money");
+                      System.out.println( " option 3 : Transfer money");
+                      System.out.println( "option 0 : Exit application");
+                      otherOptions = scan.nextByte();
+                      switch (otherOptions) {
+                          case 1:
+                              System.out.println("How much money do you want to withdraw?");
+                              double moneyToWithdraw = scan.nextDouble();
+                              client.withdraw(moneyToWithdraw);
+                              break;
+                          case 2:
+                              System.out.println("How much money do you want to  deposit?");
+                              double moneyToDeposit = scan.nextDouble();
+                              client.deposit(moneyToDeposit);
+                              break;
+                      }
 
-            // llamaando metodos
-        // Creamos la client
-        Account account1 = new Account("154516466", balance);
-        Client client1 = new Client(account1, name, password);
+                  } while (otherOptions != 0 );
+
+
+              } else {
+                  System.out.println("Invalid user press option 2 to create an account");
+              }
+          }
+
+          if (options == 2) {
+              bank.createClient();
+          }
+          if (options == 3) {
+              bank.listClients();
+          }
+      } while (options != 0);
 
 
 
 
-        // Consultamos el saldo
-        System.out.println("Total actual en la cuenta: $" + account1.getBalance());
-
-        // Hacemos un ingreso en la cuenta
-        System.out.println("Escriba el saldo a depositar en la cuenta");
-        double income = scan.nextDouble();
-        client1.deposit(income);
-        System.out.println("Se ingresaron $ " + income + " en la cuenta, saldo actual: $" + account1.getBalance());
-
-        // retirar
-
-        System.out.println("Escriba el saldo a retirar de la cuenta");
-        double withdrawal = scan.nextDouble();
-        client1.withdraw(withdrawal);
-        System.out.println("Se retiraron $ " + withdrawal + " en la cuenta, y $ " + (withdrawal < 1000 ?  200 : (200 + withdrawal*0.15) )+ " en impuestos,  saldo actual: $" + account1.getBalance());
-
-        System.out.println("Escriba el saldo a transferir");
-        double transferred= scan.nextDouble();
-        client1.transfer (transferred);
-        System.out.println("Se transfirieron $" + transferred+ " de la cuenta, $100 en impuestos, saldo actual: $" + account1.getBalance());
     }
 
 }
