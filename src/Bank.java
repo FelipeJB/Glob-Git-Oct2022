@@ -1,6 +1,8 @@
 package src;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Bank {
@@ -14,8 +16,19 @@ public class Bank {
     public String getName() { return this.name; }
 
     Administrator BankAdmin = new Administrator("Globant Bank", "admin", "Bank");
-    Client Ana = new Client(123, "Ana Gonzalez", "Ana", "Ken");
+    Client Ana = new Client(123, "Ana Buvinghausen", "Ana", "Ken");
     Client Maria = new Client(456, "Maria Bautista", "Maria", "Isaac");
+
+
+
+    //public static List<Client> allClients = new ArrayList<>();
+
+    // public static List<Client> getAllClients(){
+    //    return allClients;
+    // }
+
+    // allAccounts.add(Ana.anaAccount);
+    //allClients.add(Ana);
 
     public void clientInformation(){
         int optionBank;
@@ -83,7 +96,7 @@ public class Bank {
             myScanner = new Scanner(System.in);
             if (tempUser.equals(Ana.getUser()) && tempPassword.equals(Ana.getPassword())) {
                 System.out.println("Authentication Successful.\n");
-                System.out.println("Welcome " + Ana.getUser() + ".\n");
+                System.out.println("Welcome " + Ana.getName() + ".\n");
                 authentication = 1;
             } else {
                 System.out.println(("User name / Password not matching. Try again.\n"));
@@ -98,7 +111,6 @@ public class Bank {
         System.out.println("Your current balance is USD " + Ana.anaAccount.getBalance() + ".\n");
         System.out.println("Insert deposit amount (USD)");
         float moneyAmount = myScanner.nextFloat();
-        // myScanner = new Scanner(System.in);
         Ana.anaAccount.depositMoney(moneyAmount);
         System.out.println("Your deposit is confirmed!\n");
         System.out.println("Current Balance: USD " + Ana.anaAccount.getBalance() + ".\n");
@@ -112,7 +124,6 @@ public class Bank {
         System.out.println("Your current balance is USD " + Ana.anaAccount.getBalance() + ".\n");
         System.out.println("Insert withdraw amount (USD)");
         float moneyAmountW = myScanner.nextFloat();
-        // myScanner = new Scanner(System.in);
         if (moneyAmountW > Ana.anaAccount.getBalance()) {
             System.out.println("Withdraw amount cannot be higher than balance account.\n");
             System.out.println("Current Balance: USD " + Ana.anaAccount.getBalance() + ".\n");
@@ -129,7 +140,6 @@ public class Bank {
         System.out.println("Your current balance is USD " + Ana.anaAccount.getBalance() + ".\n");
         System.out.println("Insert transfer amount (USD)");
         float moneyAmountTransfer = myScanner.nextFloat();
-        // myScanner = new Scanner(System.in);
         float transfer = Ana.anaAccount.transferMoneyOut(moneyAmountTransfer);
         if (transfer != 0) {
             Maria.mariaAccount.depositMoney(moneyAmountTransfer);
@@ -139,8 +149,4 @@ public class Bank {
             System.out.println("Current Balance: USD " + Ana.anaAccount.getBalance() + ".\n");
         }
     }
-
-
-
-
 }

@@ -1,5 +1,7 @@
 package src;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BankAccount {
     private final float accountNumber;
@@ -15,6 +17,10 @@ public class BankAccount {
     public float getAccountNumber() { return this.accountNumber; }
     public LocalDate getOpeningDate() { return this.openingDate; }
     public float getBalance() {return this.balance; }
+
+
+
+
 
     public float depositMoney(float moneyAmount) {
         if (moneyAmount <= 0) {
