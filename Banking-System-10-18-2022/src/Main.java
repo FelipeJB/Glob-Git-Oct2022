@@ -16,10 +16,6 @@ public class Main {
         Client ChristianMartinez = new Client();
         users.add(ChristianMartinez);
 
-        public ArrayList<Client> getUsers(){
-            return users; // No puede retornar users or que main no retorna NADA Hhmmm...
-        }
-
         ChristianMartinez.setUserName("Christian Martinez");
         System.out.println(users.get(0).getUserName()); // This works, so we can iterate over the users and find if exists
 

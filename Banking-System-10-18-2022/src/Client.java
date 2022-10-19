@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -47,8 +46,7 @@ public class Client {
     }
 
     public void setAccountOpeningDate(){
-        String Date = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
-        this.accountOpeningDate = Date;
+        this.accountOpeningDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
     }
 
     public float getAccountBalance(){
@@ -71,7 +69,14 @@ public class Client {
     public void withdrawMoney(float moneyToWithdraw){
         // Check if the money is available
         if (this.getAccountBalance() >= moneyToWithdraw) {
-            this.setAccountBalance(this.getAccountBalance() - moneyToWithdraw);
+
+            // Setting taxes
+            if (moneyToWithdraw <= 1000.f) {
+                this.setAccountBalance(this.getAccountBalance() - (moneyToWithdraw + 200.f));
+            } else {
+                this.setAccountBalance(this.getAccountBalance() - (moneyToWithdraw + 200.f + (moneyToWithdraw * 0.15f)));
+            }
+
             System.out.println("Money withdrew: " + moneyToWithdraw);
             System.out.println("Current account balance: " + this.getAccountBalance());
         } else {
@@ -80,18 +85,14 @@ public class Client {
         }
     }
 
-    // Methods transferMoney
+    // Transfer money
     public void transferMoney(long accountNumber, long moneyToTransfer){
         // Checking the money is available
         if (this.getAccountBalance() >= moneyToTransfer) {
+            this.setAccountBalance(this.getAccountBalance() - (moneyToTransfer + 100.f)); // 100.f tax
 
-            /** Checking if the account number provided exists
-            users = getUsers(); // Find a way to get the users ArrayList
-            for (int i = 0; i < users.size(); i++) {
-                System.out.println(cars.get(i));
-            }*/
+            // Add the money to the target account
 
-            this.setAccountBalance(this.getAccountBalance() - moneyToTransfer);
             System.out.println("Money transferred: " + moneyToTransfer);
             System.out.println("Current account balance: " + this.getAccountBalance());
         } else {
