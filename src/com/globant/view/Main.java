@@ -28,6 +28,7 @@ public class Main {
                     if (passwordAdmin.equals(bank.getPassword())){
                         boolean activeSessionAdmin = true;
                         do {
+                            System.out.println("******************************************************");
                             System.out.println("Welcome to Admin profile, please select an option: " +
                                             "\n       1. List clients" +
                                             "\n       2. Open new account" +
@@ -63,10 +64,14 @@ public class Main {
                     scan = new Scanner(System.in);
                     String passwordClient = scan.nextLine();
 
-                    if (searchClient(bank, usernameClient, passwordClient)){
+                    Client client = searchClient(bank, usernameClient, passwordClient);
+
+                    if (client != null){
                         boolean activeSessionClient = true;
                         do {
-                            System.out.println("Welcome "+usernameClient+", please select an option: " +
+                            System.out.println("******************************************************");
+                            System.out.println("¡Welcome "+usernameClient+"! Your current balance is $ "+ client.getSavingsAccount().getBalance() +
+                                    "\nPlease select an option: " +
                                     "\n       1. Withdraw" +
                                     "\n       2. Add money" +
                                     "\n       3. Transfer money" +
@@ -78,23 +83,23 @@ public class Main {
                                     System.out.println("Enter the value to withdraw: ");
                                     scan = new Scanner(System.in);
                                     double amountToWithdraw = scan.nextDouble();
-                                    withdraw(bank, usernameClient, amountToWithdraw);
+                                    withdraw(client, amountToWithdraw);
                                     break;
                                 case 2:
                                     System.out.println("Enter the value to add: ");
                                     scan = new Scanner(System.in);
                                     double amountToAdd = scan.nextDouble();
-                                    addMoney(bank, usernameClient, amountToAdd);
+                                    addMoney(client, amountToAdd);
                                     break;
                                 case 3:
-                                    System.out.println("Enter the value to withdraw: ");
+                                    System.out.println("Enter the value to transfer: ");
                                     scan = new Scanner(System.in);
                                     double amountToTransfer = scan.nextDouble();
 
                                     System.out.println("Enter the account number to transfer the money: ");
                                     scan = new Scanner(System.in);
                                     int accountToTransfer = scan.nextInt();
-                                    transferMoney(bank, usernameClient, amountToTransfer, accountToTransfer);
+                                    transferMoney(bank, client, amountToTransfer, accountToTransfer);
                                     break;
                                 case 4:
                                     activeSessionClient = false;
@@ -124,12 +129,12 @@ public class Main {
     public static void listClients(Bank bank){
         ArrayList<Client> clients = bank.getClients();
         if (bank.getClients().size() > 0){
-            for (int i = 0; i < bank.getClients().size(); i++){
-                System.out.println("-----Client "+(i+1)+"-----");
-                System.out.println("      Username = "+bank.getClients().get(i).getUsername()+
-                        "\n      Account number = "+bank.getClients().get(i).getSavingsAccount().getAccountNumber()+
-                        "\n      Opening date = "+bank.getClients().get(i).getSavingsAccount().getOpeningDate()+
-                        "\n      Balance = "+bank.getClients().get(i).getSavingsAccount().getBalance());
+            for (Client client: bank.getClients()) {
+                System.out.println("------------------------------------------------------");
+                System.out.println("      Username = "+client.getUsername()+
+                        "\n      Account number = "+client.getSavingsAccount().getAccountNumber()+
+                        "\n      Opening date = "+client.getSavingsAccount().getOpeningDate()+
+                        "\n      Balance = "+client.getSavingsAccount().getBalance());
             }
         }else {
             System.out.println("There are no clients. Please open a new account.");
@@ -159,46 +164,56 @@ public class Main {
         }
     }
 
-    public static boolean searchClient(Bank bank, String user, String password){
+    public static Client searchClient(Bank bank, String user, String password){
         for (Client client : bank.getClients()) {
             if (client.getUsername().equals(user) && client.getPassword().equals(password)){
-                return true;
+                return client;
             }
         }
-        return false;
+        return null;
     }
 
-    public static void withdraw(Bank bank, String user, double amountToWithdraw){
-        double tax = 0d;
-        for (Client client : bank.getClients()) {
-            if (client.getUsername().equals(user)){
-                if (client.getSavingsAccount().withdraw(amountToWithdraw)){
-                    System.out.println("The withdraw was successful.");
-                }else {
-                    System.out.println("The transaction was not possible.");
+    public static void withdraw(Client client, double amountToWithdraw){
+        double tax = amountToWithdraw <= 1000 ? 200 : (200+(amountToWithdraw*0.15));
+        System.out.println("The tax for the withdraw is $"+tax+". Do you want to continue? (yes/no)");
+        Scanner scan = new Scanner(System.in);
+        String go = scan.nextLine();
+        if (go.equals("yes")){
+            if (client.getSavingsAccount().withdraw(client, amountToWithdraw, tax)){
+                System.out.println("The withdraw was successful. Your new balance is $"+client.getSavingsAccount().getBalance());
+            }else {
+                System.out.println("The transaction was not possible. Insufficient balance!");
+            }
+        }
+    }
+
+    public static void addMoney(Client client, double amountToAdd){
+        if (client.getSavingsAccount().addMoney(client, amountToAdd)){
+            System.out.println("The addition was successful. Your new balance is $"+client.getSavingsAccount().getBalance());
+        }else {
+            System.out.println("The transaction was not possible.");
+        }
+    }
+
+    public static void transferMoney(Bank bank, Client client, double amountToTransfer, int accountToTransfer){
+        boolean accountToTransExist = false;
+        for (Client clientToTransfer : bank.getClients()) {
+            if (clientToTransfer.getSavingsAccount().getAccountNumber() == accountToTransfer){
+                accountToTransExist = true;
+                System.out.println("The tax for the withdraw is $100. Do you want to continue? (yes/no)");
+                Scanner scan = new Scanner(System.in);
+                String go = scan.nextLine();
+                if (go.equals("yes")){
+                    if (client.getSavingsAccount().transferMoney(client, clientToTransfer, amountToTransfer)){
+                        System.out.println("The transfer was successful. Your new balance is $"+client.getSavingsAccount().getBalance());
+                    }else {
+                        System.out.println("The transaction was not possible. Insufficient balance!");
+                    }
                 }
             }
         }
-    }
-
-    public static void addMoney(Bank bank, String user, double amountToAdd){
-        for (Client client : bank.getClients()) {
-            if (client.getUsername().equals(user)){
-                if (client.getSavingsAccount().addMoney(amountToAdd)){
-                    System.out.println("The addition was successful.");
-                }else {
-                    System.out.println("The transaction was not possible.");
-                }
-            }
-        }
-    }
-
-    public static void transferMoney(Bank bank, String user, double amountToTransfer, int accountToTransfer){
-        double tax = 0d;
-        for (Client client : bank.getClients()) {
-            if (client.getUsername().equals(user)){
-
-            }
+        if (!accountToTransExist){
+            System.out.println("The account number doesn't exist.");
         }
     }
 }
