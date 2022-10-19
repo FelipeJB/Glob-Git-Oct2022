@@ -9,6 +9,7 @@ public class Client{
     public Account savingAccount;
 
     //constructores
+    public Client(){ }
     public Client(int clientId, String name, String password) {
         this.clientId = clientId ;
         this.name = name;
