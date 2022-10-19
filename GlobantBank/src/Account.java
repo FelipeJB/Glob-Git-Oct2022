@@ -22,6 +22,8 @@ public class Account {
 
     }
 
+
+
     @Override
     public String toString() {
         return "Account{" +
@@ -31,22 +33,30 @@ public class Account {
                 '}';
     }
 
-    public int withdraw(int amount){
-        balance -= amount;
-        return amount;
+    public String withdraw(double amount){
+        if(amount <= this.balance){
+            this.balance -= amount;
+            String message = "Successful withdrawal, This is your balance now: " + this.balance;
+            return message;
+        }
+        else {
+            String message = "Your balance is insufficient";
+            return message;
+        }
     }
 
-    public int deposit(int amount){
-        balance += amount;
-        return amount;
+    public String deposit(double amount){
+        this.balance += amount;
+        String message = "Successful consignment, This is your balance now: " + this.balance;
+        return message;
     }
 
     public int getAccountNumber() {
-        return accountNumber;
+        return this.accountNumber;
     }
 
     public double getBalance() {
-        return balance;
+        return this.balance;
     }
 
 
