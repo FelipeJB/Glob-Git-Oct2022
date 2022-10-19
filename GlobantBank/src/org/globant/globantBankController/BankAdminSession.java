@@ -1,8 +1,8 @@
-package org.globant.GlobantBankLogic;
+package org.globant.globantBankController;
 
-import org.globant.GlobantBankData.BankDataBase;
-import org.globant.GlobantBankData.SavingsAccount;
-import org.globant.GlobantBankData.User;
+import org.globant.globantBankData.Bank;
+import org.globant.globantBankData.SavingsAccount;
+import org.globant.globantBankData.User;
 
 import java.util.List;
 
@@ -45,29 +45,30 @@ public class BankAdminSession {
         }
     }
 
+
     // -------------- METHODS -----------------
 
     public void createUser(String userName, int password, float balance){
         if (this.authentication){
             User newUser = new User(userName, password, balance);
-            BankDataBase.addNewEntry(newUser.getAccount(), newUser);
+            Bank.addNewEntry(newUser.getAccount(), newUser);
         }
     }
 
     public boolean deleteUser(int id){
-        return BankDataBase.deleteEntry(id);
+        return Bank.deleteEntry(id);
     }
 
     public void listAllUsers(){
         System.out.println("  id  |  User Name  |  Account  |  Creation Date  |  Balance");
 
-        List<SavingsAccount> accounts = BankDataBase.getAllAccounts();
-        List<User> users = BankDataBase.getAllUsers();
+        List<SavingsAccount> accounts = Bank.getAllAccounts();
+        List<User> users = Bank.getAllUsers();
 
         for (int i = 0; i < users.size(); i++){
             User currentUser = users.get(i);
             SavingsAccount currentAccount = accounts.get(i);
-
+            // ----------- .toString() ------------------
             System.out.print("  " + currentUser.getId() + "\t\t");
             System.out.print("\t" + currentUser.getUserName() + "\t");
             System.out.print("\t" + currentAccount.getAccountNumber() + "\t");

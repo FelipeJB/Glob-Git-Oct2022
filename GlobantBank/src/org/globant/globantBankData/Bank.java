@@ -1,9 +1,9 @@
-package org.globant.GlobantBankData;
+package org.globant.globantBankData;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BankDataBase {
+public class Bank {
 
     private static List<SavingsAccount> allAccounts = new ArrayList<>();
     private static List<User> allUsers = new ArrayList<>();
@@ -28,6 +28,7 @@ public class BankDataBase {
     }
 
     // -------------- METHODS -----------------
+
 
     public static void addNewEntry(SavingsAccount newAccount, User newUser){
 

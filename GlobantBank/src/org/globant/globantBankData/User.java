@@ -1,7 +1,4 @@
-package org.globant.GlobantBankData;
-
-import java.util.ArrayList;
-import java.util.List;
+package org.globant.globantBankData;
 
 public class User {
 

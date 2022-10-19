@@ -1,4 +1,4 @@
-package org.globant.GlobantBankData;
+package org.globant.globantBankData;
 
 import java.time.LocalDate;
 
@@ -9,6 +9,7 @@ public class SavingsAccount {
     private int accountNumber;
     private float balance;
     private LocalDate creationDate;
+
 
     // ----------- CONSTRUCTOR -----------------
 
@@ -41,14 +42,16 @@ public class SavingsAccount {
 
     public boolean updateBalance(float amount){
         float balancePlaceHolder;
+        boolean result;
 
-        balancePlaceHolder = this.getBalance();
+        balancePlaceHolder = this.balance;  // -------------- CHECK THIS LATER ---------------
         if (balancePlaceHolder + amount < 0){
-            return false;
+            result = false;
         } else {
             this.balance = this.getBalance() + amount;
-            return true;
+            result = true;
         }
+        return result;
     }
 
 }

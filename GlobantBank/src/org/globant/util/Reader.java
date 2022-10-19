@@ -1,4 +1,4 @@
-package org.globant.GlobantBankLogic;
+package org.globant.util;
 
 import java.util.Scanner;
 

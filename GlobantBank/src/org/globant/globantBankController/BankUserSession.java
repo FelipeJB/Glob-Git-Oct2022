@@ -1,8 +1,7 @@
-package org.globant.GlobantBankLogic;
+package org.globant.globantBankController;
 
-import org.globant.GlobantBankData.BankDataBase;
-import org.globant.GlobantBankData.SavingsAccount;
-import org.globant.GlobantBankData.User;
+import org.globant.globantBankData.Bank;
+import org.globant.globantBankData.User;
 
 import java.util.List;
 
@@ -40,7 +39,7 @@ public class BankUserSession {
 
     public boolean setUserAuthentication(String user, int password){
 
-        List<User> users = BankDataBase.getAllUsers();
+        List<User> users = Bank.getAllUsers();
 
         for (int i = 0; i < users.size(); i++){
             User currentUser = users.get(i);
@@ -52,7 +51,7 @@ public class BankUserSession {
     }
 
     public int setUserIndex(String user){
-        List<User> users = BankDataBase.getAllUsers();
+        List<User> users = Bank.getAllUsers();
 
         for (int i = 0; i < users.size(); i++){
             User currentUser = users.get(i);
@@ -66,7 +65,7 @@ public class BankUserSession {
     // ----------- METHODS ------------
 
     public void deposit(float amount){
-        BankDataBase.modifyEntryBalance(this.getIndex(), amount);
+        Bank.modifyEntryBalance(this.getIndex(), amount);
     }
 
     public String withdraw(float amount){
@@ -74,8 +73,7 @@ public class BankUserSession {
             return "Invalid amount. Please use a positive number";
         } else if (amount < 1000) {
             float taxedAmount = (amount + 200)* -1;
-            if (BankDataBase.modifyEntryBalance(this.getIndex(), taxedAmount)){
-                // BankDataBase.modifyEntryBalance(this.getIndex(), taxedAmount);
+            if (Bank.modifyEntryBalance(this.getIndex(), taxedAmount)){
                 return "Transaction Completed. A tax for $200 was deducted";
             } else {
                 return "Not enough funds, remember a tax of $200 will be deducted";
@@ -83,8 +81,7 @@ public class BankUserSession {
         } else {
             float tax = (float) ((amount * 0.15) + 200);
             float taxedAmount = (float) (amount + (amount * 0.15) + 200) * -1;
-            if (BankDataBase.modifyEntryBalance(this.getIndex(), taxedAmount)){
-                // BankDataBase.modifyEntryBalance(this.getIndex(), taxedAmount);
+            if (Bank.modifyEntryBalance(this.getIndex(), taxedAmount)){
                 return "Transaction Completed. A tax for: $" + tax + " Was deducted.";
             } else {
                 return "Not enough funds, remember a tax of $" + tax + " will be deducted";
@@ -94,12 +91,12 @@ public class BankUserSession {
 
     public String transfer(float amount, int receivingAccount){
 
-        int receivingAccountIndex = BankDataBase.findAccountIndex(receivingAccount);
+        int receivingAccountIndex = Bank.findAccountIndex(receivingAccount);
         float amountToSubtract = (amount + 100) * -1;
 
         if ( receivingAccountIndex >= 0){
-            if (BankDataBase.modifyEntryBalance(this.index, amountToSubtract)){
-                BankDataBase.modifyEntryBalance(receivingAccountIndex, amount);
+            if (Bank.modifyEntryBalance(this.index, amountToSubtract)){
+                Bank.modifyEntryBalance(receivingAccountIndex, amount);
                 return "Transaction Completed. An additional tax of $100 was charged.";
             } else {
                 return "You don't have enough funds, remember there is a transaction cost of $100";
