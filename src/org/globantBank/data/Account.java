@@ -1,26 +1,15 @@
-package src.data;
+package src.org.globantBank.data;
 
 import java.util.Date;
 
 public class Account {
 
-    public String user;
+    private String user;
     private int number;
     private Date openingDate;
     private double balance;
-    public static int counter = 1001;
+    private static int counter = 1001;
 
-    public int getAccountNumber() {
-        return number;
-    }
-
-    public Date getOpeningDate() {
-        return openingDate;
-    }
-
-    public double getBalance() {
-        return balance;
-    }
     public Account (String user){
         this.user = user;
         this.number = 4525 + counter;
