@@ -1,14 +1,15 @@
-package model;
+package org.globant.controller;
+
+import org.globant.model.Account;
+import org.globant.model.Client;
 
 import java.util.ArrayList;
 
 public class Bank {
     public ArrayList<Client> clientsList;
-    public ArrayList<Account> accountsList;
 
-    public Bank(ArrayList<Client> clientsList, ArrayList<Account> accountsList) {
+    public Bank(ArrayList<Client> clientsList) {
         this.clientsList = clientsList;
-        this.accountsList = accountsList;
     }
 
     public String addClient(String userName, String password, float balance ){

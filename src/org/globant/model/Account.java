@@ -1,4 +1,4 @@
-package model;
+package org.globant.model;
 
 import java.util.Date;
 

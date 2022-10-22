@@ -1,6 +1,8 @@
-import model.Account;
-import model.Bank;
-import model.Client;
+package org.globant.view;
+
+import org.globant.model.Account;
+import org.globant.controller.Bank;
+import org.globant.model.Client;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -9,7 +11,7 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
-        Bank bank = new Bank( new ArrayList<>(), new ArrayList<>() );
+        Bank bank = new Bank( new ArrayList<>());
 
         bank.addInitialClients();
 
@@ -56,7 +58,7 @@ public class Main {
                         int subMenuOption = input.nextInt();
                         input = new Scanner(System.in);
 
-                        float amount = 0;
+                        float amount;
                         switch (subMenuOption){
                             case 1:
                                 System.out.println("Enter the amount to withdraw");
