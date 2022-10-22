@@ -1,9 +1,10 @@
-package src;
+package src.data;
 
 public class Client {
-    public Account savingsAccount;
+
     private String user;
     private String password;
+    private Account savingsAccount;
 
     public Client(String user, String password){
         this.savingsAccount = new Account(user);
