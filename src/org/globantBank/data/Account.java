@@ -17,7 +17,15 @@ public class Account {
         this.balance = 0;
         counter++;
     }
-    public String toString(){return " Account: " + number + "\n Opened: " + openingDate + "\n Balance: " + balance; }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
     public double depositMoney(float amount) {
         this.balance = this.balance + amount;
         return this.balance;

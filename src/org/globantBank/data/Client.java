@@ -17,6 +17,11 @@ public class Client {
         return user;
     }
 
+    public Account getSavingsAccount() {
+        return savingsAccount;
+    }
+
+
     public boolean authenticateClient(String user, String password){
         return this.user.equals(user) && this.password.equals(password);
     }
