@@ -12,7 +12,14 @@ public class Client {
         this.user = user;
         this.password = password;
     }
-    public boolean isClient(String user, String password){
+
+    public String getUser() {
+        return user;
+    }
+
+    public boolean authenticateClient(String user, String password){
         return this.user.equals(user) && this.password.equals(password);
     }
+
+
 }

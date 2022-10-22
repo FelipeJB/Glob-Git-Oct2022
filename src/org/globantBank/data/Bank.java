@@ -26,7 +26,7 @@ public class Bank {
     public Client isClient(String user, String password){
         Client authClient = new Client();
         for (Client client : clientList) {
-            if (client.isClient(user, password)) {
+            if (client.authenticateClient(user, password)) {
                 authClient = client;
             }
         }
@@ -35,7 +35,7 @@ public class Bank {
     public Admin isAdmin(String user, String password){
         Admin authAdmin = new Admin();
         for (Admin admin : adminList) {
-            if (admin.isAdmin(user, password)) {
+            if (admin.authenticateAdmin(user, password)) {
                 authAdmin = admin;
             }
         }

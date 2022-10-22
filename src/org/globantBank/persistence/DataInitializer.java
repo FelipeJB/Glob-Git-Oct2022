@@ -18,7 +18,7 @@ public class DataInitializer {
         bank.addClient(client2);
     }
     private static void loadAdminsToBank(Bank bank) {
-        Admin admin1 = new Admin("John Doe", "12345");
+        Admin admin1 = new Admin("JohnDoe", "12345");
         bank.addAdmin(admin1);
     }
 }

@@ -10,7 +10,14 @@ public class Admin {
         this.user = user;
         this.password = password;
     }
-    public boolean isAdmin(String user, String password) {
+
+    public String getUser() {
+        return user;
+    }
+
+    public boolean authenticateAdmin(String user, String password) {
         return this.user.equals(user) && this.password.equals(password);
     }
+
+
 }
