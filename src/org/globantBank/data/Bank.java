@@ -10,6 +10,37 @@ public class Bank {
     public Bank(String name) {
         this.name = name;
         this.clientList = new ArrayList<>();
+        this.adminList = new ArrayList<>();
     }
+
+    public String getName() {
+        return name;
+    }
+    public void addClient(Client client) {
+        this.clientList.add(client);
+    }
+    public void addAdmin(Admin admin) {
+        this.adminList.add(admin);
+    }
+
+    public Client isClient(String user, String password){
+        Client authClient = new Client();
+        for (Client client : clientList) {
+            if (client.isClient(user, password)) {
+                authClient = client;
+            }
+        }
+        return authClient;
+    }
+    public Admin isAdmin(String user, String password){
+        Admin authAdmin = new Admin();
+        for (Admin admin : adminList) {
+            if (admin.isAdmin(user, password)) {
+                authAdmin = admin;
+            }
+        }
+        return authAdmin;
+    }
+
 
 }
