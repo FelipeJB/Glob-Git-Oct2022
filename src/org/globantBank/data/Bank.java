@@ -41,6 +41,18 @@ public class Bank {
         }
         return authAdmin;
     }
+    public Account clientTotransfer(int account){
+        Account clientToTrans = new Account();
+        for (Client client : clientList) {
+            if (client.getSavingsAccount().getNumber() == account){
+                clientToTrans = client.getSavingsAccount();
 
+            }
+
+        }
+        return clientToTrans;
+
+
+    }
 
 }

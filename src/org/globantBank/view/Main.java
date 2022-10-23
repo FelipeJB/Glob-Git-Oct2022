@@ -30,7 +30,7 @@ public class Main {
             } else {
                 Client loggedClient = myBank.isClient(user, password);
                 if (loggedClient.getUser()!= null){
-                    displayClientView(loggedClient);
+                    displayClientView(loggedClient, myBank);
                 } else {
                     System.out.println("User not found! \n");
                 }
@@ -65,21 +65,27 @@ public class Main {
 
     }
 
-    public static void displayClientView(Client client){
+    public static void displayClientView(Client client, Bank myBank){
         Scanner scan = new Scanner(System.in);
         int option;
 
         do {
             System.out.println("Hi " + client.getUser() + "\n");
             System.out.println("Please select an option \n");
-            System.out.println("1. Deposit money ");
-            System.out.println("2. Withdraw money ");
-            System.out.println("3. Transfer money ");
-            System.out.println("4. Exit ");
+            System.out.println("1. Get balance ");
+            System.out.println("2. Deposit money ");
+            System.out.println("3. Withdraw money ");
+            System.out.println("4. Transfer money ");
+            System.out.println("5. Exit ");
             option = scan.nextInt();
 
             switch (option){
                 case 1:
+                    Account accToCheck = client.getSavingsAccount();
+                    System.out.println("Your current balance is " + accToCheck.getBalance());
+                    break;
+
+                case 2:
 
                     System.out.println("How much do you want to deposit? ");
                     float depositAmount = scan.nextFloat();
@@ -92,7 +98,7 @@ public class Main {
                     }
                     break;
 
-                case 2:
+                case 3:
                     System.out.println("How much do you want to Withdraw? ");
                     float withdrawAmount = scan.nextFloat();
                     Account withdrawAccount = client.getSavingsAccount();
@@ -103,16 +109,29 @@ public class Main {
                     System.out.println("Withdrawal successful " + client.getUser() + "\n" + "Your new balance is: $ " + withdrawAccount.getBalance() + "\n");
                     scan = new Scanner(System.in);
                     break;
-                case 3:
-                    System.out.println("How much do you want to Transfer?");
-                    break;
                 case 4:
+                    System.out.println("How much do you want to Transfer?");
+                    float transferAmount = scan.nextFloat();
+                    System.out.println("Please enter savings account number: ");
+                    //Account for test 4002
+                    int transferAccount = scan.nextInt();
+                    Account clientToTransfer = myBank.clientTotransfer(transferAccount);
+                    Account transferFromAccount = client.getSavingsAccount();
+                    if (transferFromAccount.transferMoney(transferAmount) == 0){
+                        System.out.println("You can't transfer more than you have. Remember that the transaction has taxes!");
+                        break;
+                    }
+                    clientToTransfer.depositMoney(transferAmount);
+                    System.out.println("Transfer successful " + client.getUser() + "\n" + "Your new balance is: $ " + transferFromAccount.getBalance() + "\n");
+                    scan = new Scanner(System.in);
+                    break;
+                case 5:
                     break;
 
             }
 
 
-        } while (option < 4);
+        } while (option < 5);
     }
 }
 

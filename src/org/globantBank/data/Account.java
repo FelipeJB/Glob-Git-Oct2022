@@ -8,11 +8,12 @@ public class Account {
     private int number;
     private Date openingDate;
     private double balance;
-    private static int counter = 1001;
+    private static int counter = 1;
 
+    public Account(){}
     public Account (String user){
         this.user = user;
-        this.number = 4525 + counter;
+        this.number = 4000 + counter;
         this.openingDate = new Date();
         this.balance = 0;
         counter++;
@@ -20,6 +21,10 @@ public class Account {
 
     public int getNumber() {
         return number;
+    }
+
+    public String getUser(int number) {
+        return user;
     }
 
     public double getBalance() {
@@ -52,6 +57,14 @@ public class Account {
             }
         }
 
+        return 0;
+    }
+    public double transferMoney(double amount){
+        double taxes = 100;
+        if (amount + taxes < this.balance){
+            this.balance = this.balance - amount - taxes;
+            return this.balance;
+        }
         return 0;
     }
 }
