@@ -27,19 +27,32 @@ public class Account {
     }
 
     public double depositMoney(float amount) {
-        this.balance = this.balance + amount;
-        return this.balance;
+        if (amount > 0){
+            this.balance = this.balance + amount;
+            return this.balance;
+        } else {
+            return 0;
+        }
+
     }
     public double withdrawMoney(float amount) {
-        if (amount < 1000){
-            float tax = 200;
-            this.balance = this.balance - amount - tax;
-            return this.balance;
-        }else{
-            double tax = (amount * 0.15) + 200;
-            this.balance = this.balance - amount - tax;
-            return this.balance;
+        double taxes;
+        if (amount <= 1000){
+            taxes = 200;
+            if (amount + taxes < this.balance){
+                this.balance = this.balance - amount - taxes;
+                return this.balance;
+            }
+            }
+        if (amount > 1000){
+            taxes = (amount * 0.15) + 200;
+            if (amount + taxes < this.balance){
+                this.balance = this.balance - amount - taxes;
+                return this.balance;
+            }
         }
+
+        return 0;
     }
 }
 
