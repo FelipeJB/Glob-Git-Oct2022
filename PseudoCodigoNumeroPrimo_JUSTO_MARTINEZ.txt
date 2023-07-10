@@ -1,0 +1,19 @@
+var num;
+read (num);
+var contador;
+
+  for (var i=1, i <= num, i++) {
+
+		if (num % i == 0) {
+		contador = contador + 1;
+
+	                           }
+}
+
+  if (contador > 2) {
+		console.log("Es numero primo");
+                    } 
+else {
+		console.log("No es numero primo");
+
+     }
