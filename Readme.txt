@@ -1,1 +1,1 @@
-Si no haces la tarea hay tabla para vane
+Si no haces la tarea hay tabla
